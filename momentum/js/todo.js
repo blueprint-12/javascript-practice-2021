@@ -4,7 +4,7 @@ const toDoList = document.querySelector("ul#todo-list");
 
 const TODOS_KEY = "todos";
 
-const toDos = [];
+let toDos = [];
 
 //toDos array의 내용을 localStorage에 넣는 일을 하는 function 
 function saveToDos(){
@@ -13,13 +13,15 @@ function saveToDos(){
 
 function deldteTodo(event){
   const li = event.target.parentElement;
+  console.log(li.id);
   li.remove(); // deleting Todo
 }
 
 function paintToDo(newTodo){ 
    const li =  document.createElement("li");
+   li.id = newTodo.id;
    const span = document.createElement("span");
-   span.innerText= newTodo; // span의 텍스트 변경
+   span.innerText = newTodo.text;  //obj 의 text
    const button = document.createElement("button");
    button.innerText= "❌" //window emoji
    button.addEventListener("click", deldteTodo );
@@ -33,9 +35,14 @@ function handleToDoSubmit(event) {
     const newTodo = toDoInput.value;
     // 입력값을 받으면 input의 화면을 비우기, 입력칸을 비웠다고해서 input값이 실제로 사라지는 것은 아님 
     toDoInput.value= "";
+    //toDos에 text가 아닌 id를 가진 객체 넣기
+    const newTodoObj = {
+        text: newTodo,
+        id: Date.now(),
+    };
     //paintToDo()하기 전에 array로 받은 값 보내기 : push
-    toDos.push(newTodo);
-    paintToDo(newTodo);
+    toDos.push(newTodoObj);
+    paintToDo(newTodoObj);
     saveToDos();
 
 };
@@ -45,5 +52,6 @@ toDoForm.addEventListener("submit", handleToDoSubmit);
 const savedToDos = localStorage.getItem(TODOS_KEY);
 if(savedToDos !== null){
     const parsedToDos = JSON.parse(localStorage.getItem(TODOS_KEY));
-    parsedToDos.forEach((item) => console.log("this is the turn of ", item));
+    toDos = parsedToDos;
+    parsedToDos.forEach(paintToDo);
 }
