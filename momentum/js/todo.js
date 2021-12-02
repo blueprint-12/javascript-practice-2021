@@ -11,11 +11,12 @@ function saveToDos(){
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
 };
 
-function deldteTodo(event){
+function deleteTodo(event){
   const li = event.target.parentElement;
-  console.log(li.id);
   li.remove(); // deleting Todo
-}
+  toDos = toDos.filter((toDo)=> toDo.id !== parseInt(li.id));
+  saveToDos();
+};
 
 function paintToDo(newTodo){ 
    const li =  document.createElement("li");
@@ -24,7 +25,7 @@ function paintToDo(newTodo){
    span.innerText = newTodo.text;  //obj 의 text
    const button = document.createElement("button");
    button.innerText= "❌" //window emoji
-   button.addEventListener("click", deldteTodo );
+   button.addEventListener("click", deleteTodo );
    li.appendChild(span);
    li.appendChild(button);
    toDoList.append(li);
@@ -38,7 +39,7 @@ function handleToDoSubmit(event) {
     //toDos에 text가 아닌 id를 가진 객체 넣기
     const newTodoObj = {
         text: newTodo,
-        id: Date.now(),
+        id: Date.now(), //return type : number
     };
     //paintToDo()하기 전에 array로 받은 값 보내기 : push
     toDos.push(newTodoObj);
@@ -55,3 +56,5 @@ if(savedToDos !== null){
     toDos = parsedToDos;
     parsedToDos.forEach(paintToDo);
 }
+
+
