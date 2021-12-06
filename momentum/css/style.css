@@ -1,7 +1,25 @@
+@import url(reset.css);
+
+@import url(clock.css);
+@import url(login-form.css);
+@import url(todo-list.css);
+@import url(quotes.css);
+@import url(weather.css);
 @import url(background.css);
 
 .hidden {
   display: none;
+}
+button {
+  box-sizing: border-box;
+  color: rgb(0, 69, 197);
+  font-weight: 600;
+  border: none;
+  padding: 3px;
+  border: 2px solid goldenrod;
+  background-color: goldenrod;
+  border-radius: 3px;
+  margin-left: 7px;
 }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -11,6 +29,11 @@ body {
   height: 100%;
   display: flex;
   justify-content: space-around;
+}
+/*flex box에 margin collapse적용 불가능 고로 상하로 값을 주지 않고 아래만 줬습니다.*/
+/*이슈: display flex 를 하니까 form에 hidden 클래스 적용이 안됨 why? */
+.main-cont > * {
+  margin: 12px 0;
 }
 .main-cont {
   background-color: rgba(255, 255, 255, 0.205);
@@ -24,10 +47,15 @@ body {
   padding: 20px;
   border-radius: 12px;
 }
-ul#todo-list {
+.main-cont__sub {
+  background-color: rgba(255, 255, 255, 0.205);
+  position: absolute;
+  bottom: 50px;
   display: flex;
   flex-direction: column;
-}
-ul#todo-list li {
-  list-style: square;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  padding: 20px;
+  border-radius: 12px;
 }

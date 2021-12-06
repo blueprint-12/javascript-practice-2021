@@ -1,0 +1,17 @@
+#quote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#quote span {
+  color: aliceblue;
+  text-shadow: goldenrod 1px 1px 5px;
+}
+#quote span:first-child {
+  margin-bottom: 7px;
+  font-size: 1rem;
+}
+#quote span:last-child {
+  font-size: 0.8rem;
+}

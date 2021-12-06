@@ -1,0 +1,7 @@
+#clock {
+  color: aquamarine;
+  text-shadow: goldenrod 1px 1px 10px;
+  box-sizing: border-box;
+  font-size: 4rem;
+  font-weight: 600;
+}

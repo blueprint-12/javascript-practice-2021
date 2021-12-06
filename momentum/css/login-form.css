@@ -1,0 +1,10 @@
+#login-form {
+  box-sizing: border-box;
+}
+h1#greeting {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-decoration: underline goldenrod;
+  text-underline-position: under;
+}
