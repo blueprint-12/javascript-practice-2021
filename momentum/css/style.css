@@ -8,7 +8,7 @@
 @import url(background.css);
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 button {
   box-sizing: border-box;
@@ -20,6 +20,12 @@ button {
   background-color: goldenrod;
   border-radius: 3px;
   margin-left: 7px;
+  transition: all 0.1s linear;
+}
+button:hover {
+  color: goldenrod;
+  background-color: rgb(0, 69, 197);
+  border-color: rgb(0, 69, 197);
 }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -31,9 +37,13 @@ body {
   justify-content: space-around;
 }
 /*flex box에 margin collapse적용 불가능 고로 상하로 값을 주지 않고 아래만 줬습니다.*/
-/*이슈: display flex 를 하니까 form에 hidden 클래스 적용이 안됨 why? */
+/*이슈: display flex 를 하니까 form에 hidden 클래스 적용이 안됨 why? 
+-> .hidden CSS 에 !important 를 주니까 해결됨 우선순위를 높이면 되는 거 같네요*/
 .main-cont > * {
   margin: 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .main-cont {
   background-color: rgba(255, 255, 255, 0.205);
@@ -44,6 +54,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 50%;
+  max-height: 60%;
   padding: 20px;
   border-radius: 12px;
 }
@@ -58,4 +69,21 @@ body {
   width: 50%;
   padding: 20px;
   border-radius: 12px;
+}
+input[type="text"] {
+  width: 200px;
+  height: 30px;
+  font-size: 1em;
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+  outline: none; /*기본테두리안보이게*/
+  padding: 3px 3px 3px 7px;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+input[type="text"]:focus {
+  border: 2px solid #4285f4;
+  box-shadow: 0 0 8px 0 #4285f4;
+  background-color: #ffffff;
 }
