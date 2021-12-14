@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>array and loop</title>
+  </head>
+  <body>
+    <h1>Loop & Array</h1>
+    <script>
+      let coworkers = ["감자", "고구마", "주먹밥", "모카"];
+    </script>
+    <h2>Co workers</h2>
+    <ul>
+      <script>
+        /*i값이 우리가 불러오고자 하는 배열의 index값과 일치하기 때문에 i 를 사용하면 된다.*/
+        let i = 0;
+        while (i < coworkers.length) {
+          document.write(`<li><a href="http://addf.com">
+            ${coworkers[i]}</a></li>`);
+          i = i + 1;
+        }
+      </script>
+    </ul>
+  </body>
+</html>
