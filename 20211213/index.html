@@ -50,10 +50,25 @@
         target.style.backgroundColor='black';
     target.style.color='white';
     this.value ='day';
-    } else {
+
+    let alist = document.querySelectorAll('a');
+      let i = 0;
+      while (i < alist.length) {
+        alist[i].style.color = 'powderblue';
+        i = i + 1;
+      };
+
+     } else {
         target.style.backgroundColor='white';
     target.style.color='black';
     this.value ='night';
+
+    let alist = document.querySelectorAll('a');
+      let i = 0;
+    while (i < alist.length) {
+        alist[i].style.color = 'blue';
+        i = i + 1;
+      };
     }
     "
     />
