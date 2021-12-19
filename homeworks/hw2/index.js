@@ -25,6 +25,7 @@ function windowResizeHandler(){
     if (screenWidth <= smallScreen){
         removeOtherClass(YELLOWCLASS, BLUECLASS);
         screen.classList.add(PINKCLASS);
+     
        
     }else if((screenWidth <= middleScreen) && (screenWidth >smallScreen)){
         removeOtherClass(PINKCLASS, YELLOWCLASS);

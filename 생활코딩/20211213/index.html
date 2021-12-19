@@ -6,34 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>nigth day버튼만들기</title>
     <script>
-      function LinkSetColor(color) {
-        let alist = document.querySelectorAll("a");
-        let i = 0;
-        while (i < alist.length) {
-          alist[i].style.color = color;
-          i = i + 1;
-        }
-      }
-      function bodySetColor(color) {
-        document.querySelector("body").style.color = color;
-      }
-      function bodySetBackgroundColor(color) {
-        document.querySelector("body").style.backgroundColor = color;
-      }
+      let Link = {
+        setColor: function (color) {
+          let alist = document.querySelectorAll("a");
+          let i = 0;
+          while (i < alist.length) {
+            alist[i].style.color = color;
+            i = i + 1;
+          }
+        },
+      };
+      // function linkSetColor(color) {
+      //   let alist = document.querySelectorAll("a");
+      //   let i = 0;
+      //   while (i < alist.length) {
+      //     alist[i].style.color = color;
+      //     i = i + 1;
+      //   }
+      // }
+      let Body = {
+        SetColor: function (color) {
+          document.querySelector("body").style.color = color;
+        },
+        SetBackgroundColor: function (color) {
+          document.querySelector("body").style.backgroundColor = color;
+        },
+      };
+      // function bodySetColor(color) {
+      //   document.querySelector("body").style.color = color;
+      // }
+      // function bodySetBackgroundColor(color) {
+      //   document.querySelector("body").style.backgroundColor = color;
+      // }
       function nightDayHandler(self) {
         const target = document.querySelector("body");
         if (self.value === "night") {
-          bodySetBackgroundColor("black");
-          bodySetColor("white");
+          Body.SetBackgroundColor("black");
+          Body.SetColor("white");
           self.value = "day";
 
-          LinkSetColor("powderblue");
+          link.SetColor("powderblue");
         } else {
-          bodySetBackgroundColor("white");
-          bodySetColor("black");
+          Body.SetBackgroundColor("white");
+          Body.SetColor("black");
           self.value = "night";
 
-          LinkSetColor("blue");
+          Link.SetColor("blue");
         }
       }
     </script>
