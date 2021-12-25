@@ -1,7 +1,6 @@
 #clock {
-  color: aquamarine;
-  text-shadow: goldenrod 1px 1px 10px;
-  box-sizing: border-box;
+  color: rgb(244, 255, 149);
+  text-shadow: rgb(255, 149, 185) 1px 1px 10px;
   font-size: 4rem;
   font-weight: 600;
 }

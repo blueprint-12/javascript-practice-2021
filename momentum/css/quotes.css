@@ -5,13 +5,15 @@
 }
 
 #quote span {
+  display: block;
+  padding-top: 7px;
   color: aliceblue;
   text-shadow: goldenrod 1px 1px 5px;
 }
 #quote span:first-child {
-  margin-bottom: 7px;
   font-size: 1rem;
 }
 #quote span:last-child {
   font-size: 0.8rem;
+  padding-bottom: 5px;
 }

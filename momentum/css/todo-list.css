@@ -25,7 +25,7 @@ ul#todo-list li {
   background-color: black;
   display: inline-block;
   box-sizing: border-box;
-  padding: 2px 4px;
+  padding: 3px 4px;
   border-radius: 3px;
 }
 ul#todo-list button {
