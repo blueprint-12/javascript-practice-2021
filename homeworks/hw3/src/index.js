@@ -20,20 +20,21 @@ const colors = [
   ];
  
   const button = document.querySelector("#color-button");
-//   let twoColoArr = [];
- // 두 값이 겹치지 않게 while문 써서 해보기 
 
+ 
 
-
-function onbtnClickHandler(){
-    const firstColor =  colors[Math.floor(Math.random() * colors.length)];
-    const secondColor =  colors[Math.floor(Math.random() * colors.length)];
+ function onBtnClickHandler(){
+   const firstColor =  colors[Math.floor(Math.random() * colors.length)];
+   const secondColor =  colors[Math.floor(Math.random() * colors.length)];
+   //두 색상의 중복을 방지하기 위한 if문
+   if( firstColor === secondColor) {
+      return onBtnClickHandler();
+    }
     document.body.style.background = `linear-gradient(.25turn,${firstColor}, ${secondColor})`
-
-   
+  
 }
 
 
-button.addEventListener("click", onbtnClickHandler);
+button.addEventListener("click", onBtnClickHandler);
 
 
