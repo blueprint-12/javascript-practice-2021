@@ -8,14 +8,18 @@
   </head>
   <body>
     <script type="text/javascript">
-      //   const grades = {};
-      //   grades["egoing"] = 10;
-      //   grades["k8805"] = 6;
-      //   grades["sorialgi"] = 80;
-      const grades = { egoing: 10, k8805: 6, sorialgi: 80 };
-      for (key in grades) {
-        document.write("key : " + key + " value : " + grades[key] + "<br />");
-      }
+      const grade = new Object(); // {}와 같은 의미인 new Object()
+      grade["cong"] = 10;
+
+      const obj1 = {
+        "cong za ban": 223,
+        showTheKey: function () {
+          for (key in obj1) {
+            console.log(typeof key);
+          }
+        },
+      };
+      obj1.showTheKey();
     </script>
   </body>
 </html>
