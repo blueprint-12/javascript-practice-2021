@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>함수의 유효범위 syntax</title>
+  </head>
+  <body>
+    <script>
+      const lv = "global variable";
+      function lscope1() {
+        let lv = "local variable";
+        lv = "this is still local variable";
+        alert(lv);
+      }
+      lscope1(); //local lv
+      alert(lv); //global lv
+    </script>
+  </body>
+</html>

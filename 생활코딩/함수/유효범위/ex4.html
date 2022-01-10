@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>정적 유효범위</title>
+  </head>
+  <body>
+    <script>
+      const i = 5; // 전역변수 i
+      function a() {
+        const i = 10; //지역변수 i
+        b();
+      }
+      function b() {
+        document.write(i); //그렇다면 여기의 i 는 지역인가 전역인가?
+      }
+      a(); //정답은 전역변수 i를 참조한다.
+    </script>
+  </body>
+</html>
