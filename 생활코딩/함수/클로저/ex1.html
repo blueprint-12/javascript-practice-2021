@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>내부함수</title>
+  </head>
+  <body>
+    <script>
+      //   function outter() {
+      //     //title 은 outter의 지역변수이다.
+      //     // inner()함수는 외부함수 outter()의 지역변수 title에 접근가능하다.
+      //     const title = "coding everyBody";
+      //     function inner() {
+      //       alert(title);
+      //     }
+      //     inner();
+      //   }
+      //   outter();
+      function outter() {
+        const title = "coding everybody";
+        return function () {
+          alert(title);
+        };
+      }
+      let inner = outter();
+      inner();
+    </script>
+  </body>
+</html>

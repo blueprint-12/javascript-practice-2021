@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>클로저 - private variable</title>
+  </head>
+  <body>
+    <script>
+      function factory_movie(title) {
+        return {
+          // 객체를 리턴
+          //get_title(), set_title()메소드를 가지고있음
+          get_title: function () {
+            return title;
+          },
+          set_title: function (_title) {
+            if (typeof _title === "string") {
+              title = _title;
+            } else {
+              alert("타이틀은 문자로 작성해야합니다. ");
+            }
+          },
+        };
+      }
+      ghost = factory_movie("Ghost in the shell");
+      matrix = factory_movie("Matrix");
+      alert(ghost.get_title()); //Ghost in the shell
+      alert(matrix.get_title()); //Matrix
+      ghost.set_title(1); //타이틀은 문자로 작성해야합니다.
+      ghost.set_title("공각기동대");
+      alert(ghost.get_title()); //공각기동대
+      alert(matrix.get_title()); //Matrix
+    </script>
+  </body>
+</html>

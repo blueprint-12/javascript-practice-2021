@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>클로저의 활용</title>
+  </head>
+  <body>
+    <script>
+      //변수선언을 var로 하게되면 오류가 나는 코드이지만
+      //const 와 let을 쓰면 원하는 결과가 나온다.
+      //원하는 결과: 0,1,2,3,4
+      //var 을 사용한 코드의 결과: 5가 5번 출력
+      // var const let 그리고 그냥 변수명만 있을 때의 특성을 알아두자
+      var arr = [];
+      for (var i = 0; i < 5; i++) {
+        arr[i] = function () {
+          return i;
+        };
+      }
+      for (var index in arr) {
+        console.log(arr[index]());
+      }
+    </script>
+  </body>
+</html>
