@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>new키워드</title>
+  </head>
+  <body>
+    <script>
+      function Person() {}
+      const p = new Person();
+      p.name = "cong";
+      p.introduce = function () {
+        return "my name is " + this.name + "</br>";
+      };
+      document.write(p.introduce());
+
+      /*
+      1.Korean()함수 정의  
+     2.함수 앞에 new 키워드 붙이기 -> Korean()함수가 생성자가됨
+     3. 인자로 ("이름")전달
+     4. Korean함수는 객체를 만드는 역할을 하는 함수 즉, 생성자가 됨
+     5.함수 내부의 실행이 완료된 뒤, 그 내용을 담은 객체를 리턴
+     6. 생성한 객체를 변수(k1, k2)에 담아서 사용
+     -----생성자 내에서 이 객체의 프로퍼티를 정의
+     -----전문 용어로 객체를 "초기화"한다고 함  
+      */
+      function Korean(name) {
+        this.name = name;
+        this.introduce = function () {
+          return "my name is " + this.name + "</br>";
+        };
+      }
+
+      const k1 = new Korean("onecong");
+      const k2 = new Korean("gamza");
+      document.write(k1.introduce());
+      document.write(k2.introduce());
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>객체 만들기 basic</title>
+  </head>
+  <body>
+    <script>
+      /*person 객체 생성, propery- name, method - introduce()*/
+      const person = {};
+
+      person.name = "example1";
+      person.introduce = function () {
+        //this 는 객체(person)를 가리킴
+        return `my name is ${this.name}</br>`;
+      };
+      document.write(person.introduce());
+
+      //객체 만들기 방법 가독성이 좀 더 좋은 아래의 코드
+      const person1 = {
+        name: "example2",
+        introduce: function () {
+          return "my name is " + this.name;
+        },
+      };
+      document.write(person1.introduce());
+    </script>
+  </body>
+</html>
