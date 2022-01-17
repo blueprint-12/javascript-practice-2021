@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>apply와 this</title>
+  </head>
+  <body>
+    <script>
+      /* 대체제 관계
+          if - switch
+          for - while
+          */
+
+      const o = {};
+      const p = {};
+      function func() {
+        switch (this) {
+          case o:
+            document.write("o<br/>");
+            break;
+          case p:
+            document.write("p<br/>");
+            break;
+          case window:
+            document.write("window<br/>");
+            break;
+        }
+      }
+      func();
+      func.apply(o); // 내장메소드 apply()의 첫번째인자는 함수호출 맥락(context)이다. 
+      func.apply(p);
+    </script>
+  </body>
+</html>

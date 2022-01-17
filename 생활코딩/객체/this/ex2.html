@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>apply , call</title>
+  </head>
+  <body>
+    <script>
+    //우리가 여태 함수를 정의한다고 알고있었지만 사실은 함수 객체를 만든 것입니다. 이것을 함수리터럴이라 합니다. 
+      function sum(x, y) {
+        return x + y;
+      }
+      let sumResult = sum(2, 3);
+      document.write(sumResult + "<br/>");
+
+      //Function 이라는 이름의 생성자 함수를 통해 메소드를 정의했다. 
+      //마지막에 오는 인자가 바로 메소드의 본문에 해당한다.앞의 요소들은 매개변수이다.
+      const sum2 = new Function("x", "y", "return x+y;");
+      sum2(2, 3);
+      let sumResult2 = sum2(3, 4);
+      document.write(sumResult2);
+
+      //객체 리터럴
+      const o = {};
+      const o1 = new Object(); 
+
+      //배열 리터럴 
+      const a = [1,2,3];
+      const a1 = new Array(1,2,3); 
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>생성자의 호출시 this</title>
+  </head>
+  <body>
+    <script>
+      let funcThis = null;
+      function Func() {
+        funcThis = this;
+      }
+      const o1 = Func();
+      if (funcThis === window) {
+        document.write("window <br/>");
+      }
+      const o2 = new Func();
+      if (funcThis === o2) {
+        document.write("o2 <br/>");
+      }
+
+      //오류가 나는 경우
+      //Uncaught ReferenceError: Cannot access 'o' before initialization
+
+      function Func2() {
+        document.write(o);
+      }
+      const o = new Func2();
+    </script>
+  </body>
+</html>
