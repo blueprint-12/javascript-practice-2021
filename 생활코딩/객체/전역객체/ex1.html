@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>전역객체(Global object)</title>
+  </head>
+  <body>
+    <script>
+      function func() {
+        alert("how are you today?");
+      }
+      func();
+      //window는 전역객체이기 때문에 생략해도 제대로 실행됨 편의상 생략한 것
+      //window.func() 에서 ()소괄호로 호출할 수 있다는 것은 func변수에 담긴 값이 함수(객체에서는 메소드)라는 의미이다.
+      //함수 앞에.(dot)이 있고 뭔가가 있다면 그것은 객체를 의미합니다.
+      window.func();
+
+      const o = {
+        func: function () {
+          if (o === this) {
+            alert("o === this");
+          }
+        },
+      };
+      o.func();
+      window.o.func();
+    </script>
+  </body>
+</html>
