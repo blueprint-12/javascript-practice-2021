@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>prototype</title>
+  </head>
+  <body>
+    <script>
+      //상속의 개념에서 중요한 역할을 하는 prototype에 대해서 좀 더 알아봅시다.
+      function Ultra() {}
+      Ultra.prototype.ultraProp = true;
+
+      function Super() {}
+      Super.prototype = new Ultra();
+
+      function Sub() {}
+      Sub.prototype = new Super();
+
+      const o = new Sub();
+      console.log(o.ultraProp);
+    </script>
+  </body>
+</html>

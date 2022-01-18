@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>상속의 사용방법</title>
+  </head>
+  <body>
+    <script>
+      //JS는 프로토타입 based 랭귀지입니다.
+      function Person(name) {
+        this.name = name;
+      }
+      Person.prototype.name = null;
+      Person.prototype.introduce = function () {
+        return "My name is " + this.name;
+      };
+
+      function Programmer(name) {
+        this.name = name;
+      }
+      Programmer.prototype = new Person();
+      Programmer.prototype.coding = function () {
+        return "I am a programmer!";
+      };
+      function Designer(name) {
+        this.name = name;
+      }
+      Designer.prototype = new Person();
+      Designer.prototype.desing = function () {
+        return "I am a desinger";
+      };
+
+      const p1 = new Programmer("cong");
+      const p2 = new Designer("kang");
+      document.write(p2.introduce() + "</br>");
+      document.write(p2.desing() + "<br/>");
+      document.write(p1.introduce() + "<br/>");
+      document.write(p1.coding() + "</br>");
+    </script>
+  </body>
+</html>
