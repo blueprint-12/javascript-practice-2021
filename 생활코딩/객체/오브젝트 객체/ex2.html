@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object객체 확장</title>
+  </head>
+  <body>
+    <script>
+      Object.prototype.contain = function (needle) {
+        for (let name in this) {
+          if (this[name] === needle) {
+            // 전달받은 인자와 해당객체의 값이 같으면 true
+            return true;
+          }
+          //for 문을 다 돌았음에도 해당 객체에서 값을 못찾았다면 false반환
+          // = 존재하지 않는 값이라면
+        }
+        return false;
+      };
+
+      const o = {
+        name: "박말자",
+        city: "화성시",
+      };
+      console.log(o.contain("박말자")); //output: true
+      const a = ["햄릿", "오셀로", "리어왕", "맥베스"];
+      console.log(a.contain("밤부")); // output: false
+
+      for (const key in a) {
+        console.log(key);
+      }
+      /*output: 
+      0
+      1
+      2
+      3
+      contain <- Object객체를 확장시켜서 a 배열에도 contain이 포함됐다.
+      */
+
+      for (const key in o) {
+        if (o.hasOwnProperty(key)) {
+          console.log(key, o[key]);
+        }
+      }
+    </script>
+  </body>
+</html>

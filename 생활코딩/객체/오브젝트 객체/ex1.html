@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object 객체 API사용법</title>
+  </head>
+  <body>
+    <script>
+      //Object.keys() 객체가 가지고 있는 key을 배열로 만들어서 리턴해주는 메소드
+      // 배열과, 객체 두 가지 예시 array는 순서대로 key값을 지정
+      const arr = ["a", "b", "c"];
+      const obj = {
+        name: "cong",
+        id: 1132,
+        address: "silver town 112",
+      };
+      console.log("Object.keys(arr)", Object.keys(arr));
+      // output ['0', '1', '2']
+      console.log("Object.keys(obj)", Object.keys(obj));
+      // output   ['name', 'id', 'address']
+
+      //Object.prototype.toString()
+      //어떤 객체가 있을 때, 그 객체가 담고있는 값이 무엇인지 사람이 보기 좋게 출력하는 메소드
+      const o = new Object();
+      console.log("o.toString()", o.toString());
+
+      const a = new Array(1, 2, 3);
+      console.log("a.toString()", a.toString());
+    </script>
+  </body>
+</html>
