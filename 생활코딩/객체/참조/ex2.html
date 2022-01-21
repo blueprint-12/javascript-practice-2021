@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>참조</title>
+  </head>
+  <body>
+    <script>
+      const a = { id: 1 };
+      const b = a;
+      b.id = 2;
+      document.write(a.id + "<br/>"); // 2 , b.id를 위에서 변경했기 떄문에 이것이 원본인 a.id에도 영향을 미친다.
+
+      const exampleObj = { flower: 1 };
+      let exmapleObj2 = exampleObj;
+      exmapleObj2 = { flower: "This is a flower" };
+      document.write(exampleObj.flower + "<br/>", exmapleObj2.flower);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>함수의 경우</title>
+  </head>
+  <body>
+    <script>
+      //원시 데이터 타입을 인자로 넘겼을 때 함수의 동작
+      const a = 1;
+      function funcA(b) {
+        b = 2;
+      }
+      // 아래의 의미 b = a
+      // b = 1이었다가, b의 값을 2로 넣어준다해도 a에는 영향이 없다.
+      funcA(a);
+      document.write(a + "<br/>"); //output: 1
+      //참조 데이터 타입을 인자로 넘겼을 때 함수의 동작
+      const obj = { id: 1 };
+      function funcB(obj2) {
+        obj2 = { id: 2 };
+      }
+      // obj2 = obj -> 여기서는 같은 객체를 가리키고 있다.
+      // obj2 = {id : 2} -> 하지만 여기서 obj2에 새로운 객체를 만들었다.
+      //그렇기 때문에 a가 바라보고 있던 {id: 1 }과는 연결이 끊긴다.
+      // 결과적으로 a의 객체는 영향을 받지 않게 된다.
+      funcB(obj);
+      document.write(obj.id + "<br/>"); // 1
+
+      const objC = { id: 1 };
+      function funcC(objD) {
+        objD.id = 2;
+      }
+      // objC = {id : 1 }
+      // objD = objC -> 같은 것을 참조함
+      // objD.id = 2 -> 새로 함수를 만들어 준 것이 아니라 내용물의 값을 변경한 것이므로 서로에게 영향
+      // objC.id = 2 -> 결과적으로 objC의 id 값이 변경됨
+      funcC(objC);
+      document.write(objC.id); //outpu : 2 원본의 값이 변경됐음
+    </script>
+  </body>
+</html>
