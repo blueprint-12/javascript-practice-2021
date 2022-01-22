@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <body id="start">
+    <ul>
+      <li><a href="./532">html</a></li>
+      <li><a href="./533">css</a></li>
+      <li>
+        <a href="./534">JavaScript</a>
+        <ul>
+          <li><a href="./535">JavaScript Core</a></li>
+          <li><a href="./536">DOM</a></li>
+          <li><a href="./537">BOM</a></li>
+        </ul>
+      </li>
+    </ul>
+    <script>
+      //재귀함수 - 어떤 함수가 실행될 때, 자기자신을 호출하는 것
+
+      /* traverse 함수는 2개의 매개변수를 가지고 있어야 한다.
+      1. 조회하려고하는 root element
+      2. 다른 함수에 매개변수로 넘겨준 함수 이를 callback함수라함,
+      매개변수로 넘겨받은 함수는 일단 넘겨받고, 때가 되면 나중에 호출(called back)한다는 것이 콜백함수의 개념
+      ->콜백함수는 traverse 의 내부에서 실행됨
+     for문 돌릴때 제한을 걸고싶다-> elements Node는 제한 -> Node의 타입을 확인하면 된다.
+      */
+      function traverse(target, callback) {
+        //if 문 내부의 Node.ELEMENT_NODE는 숫자로 1 이지만 명시적으로 써두는 것이 이해에 좋다
+        if (target.nodeType === Node.ELEMENT_NODE) {
+          // a태그에 해당하는 element 만 callback함수의 인자로 전달됨
+          if (target.nodeName === "A") callback(target);
+          const c = target.childNodes;
+          for (let i = 0; i < c.length; i++) {
+            traverse(c[i], callback);
+          }
+        }
+      }
+
+      traverse(document.getElementById("start"), function (elem) {
+        console.log(elem);
+      });
+    </script>
+  </body>
+</html>
