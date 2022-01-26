@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>사용자와 커뮤니케이션</title>
+  </head>
+  <body>
+    <input type="button" value="alert" onclick="alertfnc();" />
+    <input type="button" value="confirm" onclick="func_confirm();" />
+    <input type="button" value="prompt" onclick="func_prompt();" />
+    <script>
+      function alertfnc() {
+        alert(1); //경고창이 뜨고 확인을 누르지않으면 그 다음 로직이 실행되지않음
+        alert(2);
+        alert(3);
+      }
+
+      function func_confirm() {
+        if (confirm("ok?")) {
+          //true일때
+          alert("ok");
+        } else {
+          //false일때
+          alert("cancel");
+        }
+      }
+      function func_prompt() {
+        if (prompt("what is your name?") === "cong") {
+          alert("welcome");
+        } else {
+          alert("wrong name!");
+        }
+      }
+    </script>
+  </body>
+</html>
