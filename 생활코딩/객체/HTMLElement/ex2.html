@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실행 결과가 하나인 엘리먼트</title>
+  </head>
+  <body>
+    <!-- a태그, li태그, input태그 -->
+    <a id="anchor" href="http://opentutorials.org">opentutorials</a>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li id="list">JavaScript</li>
+    </ul>
+    <input type="button" id="button" value="button" />
+    <script>
+      const target = document.getElementById("list");
+      console.log(target.constructor.name); // output:HTMLLIElement
+
+      const target1 = document.getElementById("anchor");
+      console.log(target1.constructor.name); // output: HTMLAnchorElement
+
+      const target2 = document.getElementById("button");
+      console.log(target2.constructor.name); // output: HTMLInputElement
+    </script>
+  </body>
+</html>

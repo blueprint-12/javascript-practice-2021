@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTMLElement</title>
+  </head>
+  <body>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li id="active">JavaScript</li>
+    </ul>
+    <script>
+      var li = document.getElementById("active");
+      //li객체의 생성자함수를 알아낸 다음 그 함수의 이름을 알아내면 li객체의 이름을 알 수 있다.
+      console.log(li.constructor.name); // output: HTMLLIElement
+      var lis = document.getElementsByTagName("li");
+      // 위와 같으나 Elements 이기 떄문에 lis 라는 차이점이 있다.
+      console.log(lis.constructor.name); // output: HTMLCollection
+    </script>
+  </body>
+</html>
