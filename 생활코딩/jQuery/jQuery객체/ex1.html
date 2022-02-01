@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>제이쿼리 객체</title>
+  </head>
+  <body>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li id="active">JavaScript</li>
+    </ul>
+    <!--제이쿼리 CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      const li = $("li"); // 제이쿼리 함수의 리턴값인 제이쿼리 객체를 li에 담음
+      for (let i = 0; i < li.length; i++) {
+        console.log(li[i].css("color", "blue"));
+      }
+    </script>
+  </body>
+</html>

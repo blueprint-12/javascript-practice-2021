@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>map()사용하여 조회하기</title>
+  </head>
+  <body>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+    </ul>
+    <!--제이쿼리 CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      const li = $("li");
+      li.map(function (index, element) {
+        console.log(index, element);
+        $(element).css("color", "blue");
+      });
+    </script>
+  </body>
+</html>
