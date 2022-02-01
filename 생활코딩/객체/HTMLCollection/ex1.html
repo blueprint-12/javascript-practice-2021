@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTMLCollection</title>
+  </head>
+  <body>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li id="active">JavaScript</li>
+    </ul>
+    <script>
+      //console.group("그룹명")과 console.groupEnd() 사이의 코드를 그룹핑해서 보여준다.
+      //시각적으로 로그들을 그룹핑
+      console.group("before");
+      //HTMLCollection 이라는 객체를 담은 lis
+      let lis = document.getElementsByTagName("li");
+      for (let i = 0; i < lis.length; i++) {
+        console.log(lis[i]);
+      }
+      console.groupEnd();
+      //새로운 그룹핑(after라는 그룹)을 했다
+      console.group("after");
+
+      //li[1] 즉, CSS라는 내용을 담은 li태그 하나를 삭제
+      lis[1].parentNode.removeChild(lis[1]);
+
+      for (let i = 0; i < lis.length; i++) {
+        console.log(lis[i]);
+      }
+      console.groupEnd();
+    </script>
+  </body>
+</html>
