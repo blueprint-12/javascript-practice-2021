@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>클로저</title>
+  </head>
+  <body>
+    <div>
+      함수를 함수 안에 정의하면 함수의 부모함수의 스코프에 접근할 수 있는 예시
+    </div>
+    <script>
+      let l0 = "l0"; //전역변수 선언
+
+      function fn1() {
+        function fn2() {
+          function fn3() {
+            let l3 = "l3";
+            console.log(l0, l1, l2, l3);
+          }
+          let l2 = "l2";
+          console.log(l0, l1, l2); // script: l0, Closure(fn1) l1 , local l2
+          fn3();
+        }
+        let l1 = "l1";
+        console.log(l0, l1); // script l0, 지역 l1
+        fn2();
+      }
+
+      fn1();
+    </script>
+  </body>
+</html>
