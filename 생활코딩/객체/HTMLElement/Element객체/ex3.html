@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>element 식별자 API classList</title>
+  </head>
+  <body>
+    <ul>
+      <li>html</li>
+      <li>css</li>
+      <li id="active" class="important current">JavaScript</li>
+    </ul>
+    <script>
+      const active = document.getElementById("active");
+      console.log(active.classList);
+      console.log(active.classList.length); //output: 2
+      //반복문을 순회하여 클래스 리스트 열거하기
+      for (let i = 0; i < active.classList.length; i++) {
+        console.log(active.classList[i]);
+      } //output: important, current
+      //클래스 추가하기
+      active.classList.add("added");
+      console.log(active.classList);
+      //클래스 삭제하기
+      active.classList.remove("added");
+      console.log(active.classList);
+      //실행할 때마다 추가했다가 제거했다가 하고 싶을 때 -> toggle(on off스위치 같은 것)
+      //toggle : 있다면 제거, 없다면 추가하는 기능
+      active.classList.toggle("gamza");
+      console.log(active.classList); //추가됨
+      active.classList.toggle("gamza");
+      console.log(active.classList); //삭제됨
+    </script>
+  </body>
+</html>
