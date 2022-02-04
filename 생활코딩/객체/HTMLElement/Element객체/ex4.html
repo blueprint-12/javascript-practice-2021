@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Element객체 엘리먼트 조회하기</title>
+  </head>
+  <body>
+    <ul>
+      <li class="marked">html</li>
+      <li>css</li>
+      <li id="active">
+        JavaScript
+        <ul>
+          <li>JavaScript Core</li>
+          <li class="marked">DOM</li>
+          <li class="marked">BOM</li>
+        </ul>
+      </li>
+    </ul>
+    <script>
+      //class name이 marked 인 모든 엘리먼트 조회
+      const list = document.getElementsByClassName("marked");
+      console.group("document");
+      for (let i = 0; i < list.length; i++) {
+        console.log(list[i].textContent);
+      }
+      console.groupEnd();
+      //id가 active인 엘리먼트의 하위 요소들(marked)만 조회
+      console.group("active");
+      const active = document.getElementById("active");
+      const list2 = active.getElementsByClassName("marked");
+      for (let i = 0; i < list2.length; i++) {
+        console.log(list2[i].textContent);
+      }
+      console.groupEnd();
+    </script>
+  </body>
+</html>
