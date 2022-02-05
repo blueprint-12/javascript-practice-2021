@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery :selector context</title>
+  </head>
+  <body>
+    <ul>
+      <li class="marked">html</li>
+      <li>css</li>
+      <li id="active">
+        JS
+        <ul>
+          <li>JS core</li>
+          <li class="marked">DOM</li>
+          <li class="marked">BOM</li>
+        </ul>
+      </li>
+    </ul>
+    <!--제이쿼리 CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      //2번째 인자가 selector context
+      $(".marked", "#active").css("background-color", "red");
+      $("#active .marked").css("color", "blue");
+      //.find() 사용하기
+      $("#active").find(".marked").css("font-weight", "800");
+      $("#active")
+        .css("color", "blue")
+        .find(".marked")
+        .css("background-color", "red");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>제이쿼리 속성 API 써보기</title>
+  </head>
+  <body>
+    <a id="t1" href="./demo.html">opentutorials</a>
+    <input id="t2" type="checkbox" checked="checked" /><br />
+
+    <label for="checkbox">Check here!</label>
+    <!-- checked 가 없다면 빈상태로 화면에 출력됨 checked는 HTML 속성이다. -->
+    <input id="체크박스" type="checkbox" checked="checked" />
+
+    <div id="s1">example1</div>
+    <div id="s2">example1</div>
+    <!--제이쿼리 CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      //속성방식 attr, 프로퍼티방식 prop
+      const t1 = $("#t1");
+      console.log(t1.attr("href")); // ./demo.html
+      console.log(t1.prop("href")); // http://127.0.0.1:5500/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9/jQuery/jQuery%EA%B0%9D%EC%B2%B4/demo.html
+
+      const t2 = $("#t2");
+      console.log(t2.attr("checked")); //checked
+      console.log(t2.prop("checked")); //true
+
+      //jQeury를 이용하면 프로퍼티의 이름으로 어떤 것을 사용하든 올바른 것으로 교정된다.
+      //아래는 className을 사용하든 class를 사용하든 똑같이 class명을 추가하는 기능을 구사
+      //위와 다르게 체이닝을 사용해서 바로 적용
+      $("#s1").prop("className", "important");
+      $("#s2").prop("class", "current");
+
+      //Display the checked attr and prop of a checkbox as it changes.
+      //체크박스에 checked 인 상태라면 true 아니라면 false가 콘솔에 표시됨
+      $("#체크박스")
+        .change(function () {
+          const $체크박스 = $(this);
+          console.log($("#체크박스").prop("checked"));
+        })
+        .change();
+    </script>
+  </body>
+</html>
