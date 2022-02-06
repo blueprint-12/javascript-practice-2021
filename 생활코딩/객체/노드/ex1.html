@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>노드 객체 API 사용해보기</title>
+  </head>
+  <body>
+    <ul>
+      <li>안녕</li>
+      <li>나는</li>
+      <li id="target">
+        HTML
+        <ol>
+          <li>나는</li>
+          <li>오더드</li>
+          <li>리스트</li>
+        </ol>
+      </li>
+    </ul>
+    <script>
+      const t = document.getElementById("target");
+      console.log(t.nodeType); //output: 1 (1은 상수로 Element를 뜻함)
+      console.log(t.nodeName); // output: LI
+      console.log(t.textContent); //본인 포함 하위 내용까지 전부 출력
+    </script>
+  </body>
+</html>
