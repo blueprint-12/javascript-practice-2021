@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>노드 제거하기</title>
+  </head>
+  <body>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li id="target">JavaScript</li>
+    </ul>
+    <input type="button" onclick="callReplaceChild();" value="replaceChild()" />
+    <script>
+      //   function callRemoveChild() {
+      //     //1. 삭제하고자 하는 엘리먼트의 객체를 target에 담기
+      //     //2. 부모 노드 객체.removeChild(삭제하고자 하는 엘리먼트를 담은 객체);
+      //     const target = document.getElementById("target");
+      //     target.parentNode.removeChild(target);
+      //   }
+
+      function callReplaceChild() {
+        //1.삽입할 새로운 엘레멘트 생성하기
+        const a = document.createElement("a");
+        a.setAttribute("href", "http://opentutorials.org/module/904/6701");
+        a.appendChild(document.createTextNode("Web browser JavaScript"));
+
+        //2. 변경하고자하는 엘리먼트를 담은 객체.replaceChild(newElement, oldElement)
+        // 여기서 target.firstChild 가 -> text node 기 때문에
+        const target = document.getElementById("target");
+        console.log(target.firstChild); //text node-> 즉, javaScript
+        target.replaceChild(a, target.firstChild);
+        console.log(target.firstChild);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node의 변경 API</title>
+  </head>
+  <body>
+    <ul id="target">
+      <li>HTML</li>
+      <li>CSS</li>
+    </ul>
+    <input type="button" onclick="callAppendChild();" value="appendChild()" />
+    <input type="button" onclick="callInsertBefore();" value="insertBefore()" />
+    <script>
+      function callAppendChild() {
+        const target = document.getElementById("target");
+        const li = document.createElement("li");
+        //위에서 li엘리먼트를 만들었다면 Text Node를 통해서 내용을 삽입합니다.
+        //li 엘리먼트에 담을 text 객체를 만들고 결합해야 합니다.
+        const text = document.createTextNode("JavaScript");
+        // li에 appendChild를 통해 인자로 text객체(text node)를 전달
+        li.appendChild(text);
+        //appendChild 를 통해 해당 객체 target의 맨 끝자식으로 추가한다.
+        target.appendChild(li);
+      }
+
+      //원하는 위치에 새로만든 엘리먼트를 추가하고싶다면 insertBefore를 사용하면 된다.
+      function callInsertBefore() {
+        const target = document.getElementById("target");
+        const li = document.createElement("li");
+        const text = document.createTextNode("jQuery");
+        li.appendChild(text);
+        //target.firstChild 의 앞쪽에 추가한다.
+        target.insertBefore(li, target.firstChild);
+        console.log(target.firstChild);
+      }
+    </script>
+  </body>
+</html>
