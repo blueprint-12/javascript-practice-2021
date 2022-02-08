@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery node 제어 API: 복사</title>
+  </head>
+  <body>
+    <div class="target" id="target1">target1</div>
+    <div class="target" id="target2">target2</div>
+    <div id="source">source</div>
+    <input type="button" value="append target1" id="btn1" />
+    <input type="button" value="replaceWith target2" id="btn2" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      //클래스명이 target인 부분을 클릭했을 때 아이디가 source인 것으로 변경하고 싶을 때
+      $("#btn").click(function () {
+        //clone메소드를 통해서 source를 복사하고 target1부분을 대체
+        $("#source").clone().replaceAll("#target1");
+      });
+
+      $("#btn2").click(function () {
+        $("#target2").replaceWith($("#source").clone());
+      });
+      //이동API : dom manipulation API인자로 특정 노드를 선택하면 이동의 효과가 난다.
+      $("#btn1").click(function () {
+        $("#target1").after($("#source"));
+      });
+    </script>
+  </body>
+</html>

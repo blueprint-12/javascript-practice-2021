@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery node 제어 API: 제거</title>
+  </head>
+  <body>
+    <div class="target" id="target1">target1</div>
+    <div class="target" id="target2">target2</div>
+    <input type="button" value="remove target1" id="btn1" />
+    <input type="button" value="empty target2" id="btn2" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      //Remove the set of matched elements from the DOM.
+      $("#btn1").click(function () {
+        $("#target1").remove();
+      });
+      //Remove all child nodes of the set of matched elements from the DOM.
+      $("#btn2").click(function () {
+        $("#target2").empty();
+      });
+    </script>
+  </body>
+</html>
