@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text 객체, 노드 알아보기</title>
+  </head>
+  <body>
+    <!-- 첫번째 p태그는 span태그가 있고 공백이 존재하지 않습니다. 
+      두번째 p태그는 줄바꿈, 들여쓰기와 같은 공백이 존재한다는 차이가 있습니다. -->
+    <p id="target1"><span>Hello world</span></p>
+    <p id="target2">
+      <span>Hello world</span>
+    </p>
+    <script>
+      const t1 = document.getElementById("target1");
+      const t2 = document.getElementById("target2").firstChild;
+
+      console.log(t1.firstChild); //output: span 태그
+      console.log(t1.firstChild.firstChild); // output: "Hello world"
+      console.log(t1.firstChild.firstChild.nodeValue); // output: Hello world
+      try {
+        console.log(t2.firstChild.nodeValue);
+      } catch (e) {
+        console.log(e);
+      }
+      console.log(t2.nextSibling.firstChild.nodeValue);
+    </script>
+  </body>
+</html>
