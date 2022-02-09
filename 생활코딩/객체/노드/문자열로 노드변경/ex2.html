@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>insertAdjacentHTML(position,text) 사용하기</title>
+  </head>
+  <body>
+    <ul id="target">
+      <li>CSS</li>
+    </ul>
+    <input type="button" onclick="beforebegin();" value="beforebegin" />
+    <input type="button" onclick="afterbegin();" value="afterbegin" />
+    <input type="button" onclick="beforeend();" value="beforeend" />
+    <input type="button" onclick="afterend();" value="afterend" />
+    <script>
+      //insertAdjacentHTML(삽입할 위치,삽입할 텍스트)
+      //시작 직전 즉, 해당 엘리먼트의 위쪽에 삽입된다.
+      const target = document.getElementById("target");
+      function beforebegin() {
+        target.insertAdjacentHTML("beforebegin", "<h1>Client Side</h1>");
+      }
+      //엘리먼트가 시작한 후 맨앞쪽(첫번째 자식)
+      function afterbegin() {
+        target.insertAdjacentHTML("afterbegin", "<li>HTML</li>");
+      }
+      //엘리먼트가 끝나기 직전(마지막 자식)
+      function beforeend() {
+        target.insertAdjacentHTML("beforeend", "<li>JavaScript</li>");
+      }
+      //엘리먼트가 끝난 직후(닫히는 태그 바로 아래에 생긴다)
+      function afterend() {
+        target.insertAdjacentHTML("afterend", "<h1>Server Side</h1>");
+      }
+    </script>
+  </body>
+</html>
