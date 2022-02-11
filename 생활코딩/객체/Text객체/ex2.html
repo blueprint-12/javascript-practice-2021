@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text obj 값 API</title>
+  </head>
+  <body>
+    <!-- Text obj 값을 setting 하기 getting 하기 -->
+    <ul>
+      <li id="target">html</li>
+      <li>css</li>
+      <li>JavaScript</li>
+    </ul>
+    <script>
+      const target = document.getElementById("target").firstChild;
+      // 두 프로퍼티는 같은 결과물을 낸다. output: html
+      console.log(target.nodeValue);
+      console.log(target.data);
+      target.data = "changed html";
+      console.log(target.data); // changed html
+      target.replaceData(0, 7, "tomato"); //output : "tomato html"
+      console.log(target);
+    </script>
+  </body>
+</html>
