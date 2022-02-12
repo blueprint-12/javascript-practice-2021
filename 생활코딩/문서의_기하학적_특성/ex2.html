@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>엘레멘트의 크기와 위치 알아내기</title>
-    <!-- Element.getBoundingClientRect()
-    HTMLElement.offsetParent -->
+    <title>viewport</title>
     <style>
       body {
         padding: 0;
@@ -19,7 +17,7 @@
       }
       #target {
         width: 100px;
-        height: 100px;
+        height: 2000px;
       }
     </style>
   </head>
@@ -27,12 +25,17 @@
     <div>
       <div id="target">Coding</div>
     </div>
+
     <script>
       const t = document.getElementById("target");
-      //엘리먼트의 크기에 마진은 포함하지 않음 테두리까지만 포함
-      console.log(t.getBoundingClientRect()); //output: DOMRect 객체 반환
-      console.log(t.offsetParent); //output: body 태그 반환
-      console.log(t.clientHeight, t.clientWidth); //output: 200 200
+      setInterval(function () {
+        console.log(
+          "getBoundingClientRect : ",
+          t.getBoundingClientRect().top,
+          "pageYOffset:",
+          window.pageYOffset
+        );
+      }, 1000);
     </script>
   </body>
 </html>
