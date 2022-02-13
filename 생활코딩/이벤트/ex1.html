@@ -8,10 +8,28 @@
   </head>
   <body>
     <!-- 이벤트등록 - inline 방식 -->
+    <input type="button" onclick="alert('Hollo world');" value="button" />
+    <!--자기 자신을 참조하는 불편한 방법-->
+    <input
+      id="target"
+      type="button"
+      onclick="alert(`Hell world, ` + document.getElementById('target').value);"
+      value="button"
+    />
+    <!--this 를 통해서 간편하게 참조하는 방법-->
     <input
       type="button"
-      onclick="alert(window.location)"
-      value="alert(window.location)"
+      onclick="alert(`Hello world `+ this.value);"
+      value="button"
     />
+    <!--프로퍼티 리스너 방식 -->
+    <!--인자로의 이벤트 객체 -->
+    <input type="button" id="프로퍼티리스너" value="프로퍼티리스너" />
+    <script>
+      const 프로퍼티 = document.getElementById("프로퍼티리스너");
+      프로퍼티.onclick = function (event) {
+        alert("Hello world " + event.target.value);
+      };
+    </script>
   </body>
 </html>
