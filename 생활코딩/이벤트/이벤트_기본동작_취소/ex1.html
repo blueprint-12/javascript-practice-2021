@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트 기본 동작 취소</title>
+  </head>
+  <body>
+      <!-- 인라인 방식일 때  -->
+    <p>
+      <label>prevent event on</label
+      ><input id="prevent" type="checkbox" name="eventprevent" />
+    </p>
+    <p>
+        <!-- 만일 id가 prevent인 체크박스의 값이 true(checked)라면 return false -->
+      <a
+        href="http://opentutorials.org"
+        target="_blank"
+        onclick="if(document.getElementById('prevent').checked) return false;"
+      >opentutorials</a>
+    </p>
+    <p>
+        <form action="http://opentutorials.org" onsubmit="if(document.getElementById('prevent').checked) return false;">
+                <input type="submit" />
+        </form>
+    </p>
+  
+  </body>
+</html>

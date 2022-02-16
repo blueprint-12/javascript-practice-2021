@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 기본 동작 취소: 프로퍼티 방식</title>
+</head>
+<body>
+    <p>
+        <label>prevent event on</label><input id="prevent" type="checkbox" name="eventprevent" value="on" />
+    </p>
+    <p>
+        <a href="http://opentutorials.org">opentutorials</a>
+    </p>
+    <p>
+        <form action="http://opentutorials.org">
+                <input type="submit" />
+        </form>
+    </p>
+    <script>
+        //각각의 객체에 이벤트 프로퍼티를 지정하고 그곳에 함수를 대입
+        document.querySelector('a').onclick = function(event){
+            if(document.getElementById('prevent').checked)
+                return false;
+        };
+         
+        document.querySelector('form').onclick = function(event){
+            if(document.getElementById('prevent').checked)
+                return false;
+        };
+     
+    </script>
+</body>
+</html>
