@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery: on API 사용하기, late binding</title>
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+     //html 요소들이 script태그보다 아래에 존재하기 때문에 작동 X 
+      $("ul").on("click", "a, li", function (event) {
+        console.log(this.tagName + "I am on ul tag");
+      });
+      //late binding 을 통해 작동이 가능한 코드
+      $("body").on("click", "a, li", function (event) {
+        console.log(this.tagName + "I am on body tag");
+      });
+    </script>
+    <ul>
+      <li><a href="#">HTML</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">JavaScript</a></li>
+    </ul>
+  </body>
+</html>

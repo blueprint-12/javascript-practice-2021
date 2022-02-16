@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>멀티 바인딩(이벤트 다중등록)</title>
+  </head>
+  <body>
+    <!--기능설명: 이벤트 타입에 따라 해당 이벤트 타입명을 p태그에 콘텐츠로 삽입-->
+    <!-- 메소드 설명
+    .html(htmlString): Set the HTML contetns of each element in the set of matched elements.
+    -->
+
+    <input id="target" />
+    <p id="status"></p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      // 방법 1 이벤트 사이를 띄어쓰기를 통해 구분
+      //   $("#target").on("focus blur", function (e) {
+      //     $("#status").html(e.type);
+      //   });
+
+      //   방법2 on메소드에 객체넣기
+      //   const handler = function (e) {
+      //     $("#status").html(e.type);
+      //   };
+      //   $("#target").on({
+      //     blur: handler,
+      //     focus: handler,
+      //   });
+      //방법3 체이닝 활용하기
+      const handler = function (e) {
+        $("#status").html(e.type);
+      };
+      $("#target").on("blur", handler).on("focus", handler);
+    </script>
+  </body>
+</html>
