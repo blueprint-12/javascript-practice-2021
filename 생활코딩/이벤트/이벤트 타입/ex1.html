@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form 관련 이벤트</title>
+  </head>
+  <body>
+    <!--submit이벤트-->
+    <form id="target" action="result.html">
+      <label for="name">name </label><input id="name" type="name" />
+      <input type="submit" />
+    </form>
+
+    <!--change이벤트-->
+    <div>
+      this is for the change Event
+      <p id="result"></p>
+      <input id="change_target" type="name" />
+    </div>
+
+    <!--focus , blur 이벤트-->
+    <div>
+      this is focus and blue Event <br />
+      <input id="focus_target" type="name" />
+    </div>
+    <script>
+      //submit이벤트
+      const t = document.getElementById("target");
+      //submit이벤트가 발생할 때 익명함수가 호출
+      //form태그에 기술된 action프로퍼티로 전송하는 기본동작을 preventDafault()로 방지한다.
+      t.addEventListener("submit", function (event) {
+        if (document.getElementById("name").value.length === 0) {
+          alert("name  필드의 값이 누락됐습니다.");
+          event.preventDefault();
+        }
+      });
+      // change 이벤트
+      //
+      const ct = document.getElementById("change_target");
+      ct.addEventListener("change", function (event) {
+        document.getElementById("result").innerHTML = event.target.value;
+      });
+
+      //focus , blur 이벤트
+      //alert를 사용하면 무한루프에 빠지니 console.log를 사용하는 것이 좋다.
+      const ft = document.getElementById("focus_target");
+      ft.addEventListener("focus", function (event) {
+        console.log("this element has been focused.");
+      });
+      //blur 이벤트
+      ft.addEventListener("blur", function (event) {
+        console.log("this element has been blured.");
+      });
+    </script>
+  </body>
+</html>
