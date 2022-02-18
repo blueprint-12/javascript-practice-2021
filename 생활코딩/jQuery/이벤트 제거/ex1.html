@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트 제거하기</title>
+  </head>
+  <body>
+    <input id="target" />
+    <input id="remove" type="button" value="remove" />
+    <p id="status"></p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      var handler = function (e) {
+        $("#status").text(e.type + Math.random());
+      };
+      $("#target").on("focus blur", handler);
+      $("target").on("focus", function (e) {
+        //하나의 엘리먼트에 2개의 포커스 이벤트를 준 것 -> off 를 사용해서 focus이벤트를
+        //제거하면 2개에 해당하는 포커스 이벤트 핸들러가 전부 삭제됨
+
+        alert(1);
+      });
+      //id가 remove인 버튼을 클릭했을 때, id가 타겟인 엘리먼트에 붙어있는
+      // focus blur이벤트를 제거
+      $("#remove").on("click", function (e) {
+        $("#target").off("focus", handler);
+        console.log(32);
+      });
+    </script>
+  </body>
+</html>
