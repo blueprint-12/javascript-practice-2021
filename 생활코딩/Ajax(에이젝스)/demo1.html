@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GET방식으로 현재시간 표시하는 예시</title>
+  </head>
+  <body>
+    <p>time : <span id="time"></span></p>
+    <input type="button" id="execute" value="execute" />
+    <script>
+      document
+        .querySelector("input")
+        //버튼을 클릭하면 이벤트발생
+        .addEventListener("click", function (event) {
+          //XMLHttpRequest를 생성하고 그것을 xhr변수에 담기
+          //xhr 변수를 이용해서 객체를 제어할 수 있게 만듦
+          const xhr = new XMLHttpRequest();
+          //.open() -> .send()는 지켜야할 순서이다.
+          //.open()의 첫번째 인자로 GET을 주고 두번째 인자로 ./time.php라는 스트링을 줌
+          //첫번째인자: 서버통신 방법을 뜻하며 GET방식으로 한다라는 의미
+          //두번째인자: 서버 통신을 할 때의 리소스는 ./time.php라는 것
+          //<form method="GET" action="./time.php"
+          //send()가 호출될 때 서버와 통신을 시작한다.
+          xhr.open("GET", "./time.php");
+          xhr.onreadystatechange = function () {
+            //.readyState ===4 현재 통신이 어떤 상태인지 알려줌 4번은 모든 통신이 끝남,
+            //.status === 200 커뮤니케이션의 결과를 의미하며 200번은 성공을 뜻함(404 not found)
+            //결론적으로 통신이 완료됐고 통신에 성공했다면 내부 코드 실행
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              //time의 콘텐츠로 서버에서 가져온 정보를 넣어준다.
+              //.responseText 서버에서 리턴해준 정보를 담고있는 프로퍼티
+              document.querySelector("#time").innerHTML = xhr.responseText;
+            }
+          };
+          xhr.send();
+        });
+      /*time.php 내용(서버측)
+        <?php
+        $d1 = new DateTime;
+        $d1->setTimezone(new DateTimezone("asia/seoul"));
+        echo $d1->format('H:i:s');
+        ?>
+        */
+    </script>
+  </body>
+</html>
