@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON에 대해서</title>
+    <!-- JSON API
+    JSON.parse(): 인자로 전달된 문자열(JSON의 text)을 자바스크립트 데이터로 변환한다.
+    JSON.stringify(): 인자로 전달된 자바스크립트의 데이터를 문자열로 변환한다. -->
+  </head>
+  <body>
+    <script>
+      //JSON은 text format이기 때문에 text형식으로 값을 가져오는 것이 좋다. ->
+      //특히,VSCode같은 소스 코드 편집기를 사용할 때에는 멋대로 객체의 key 큰따옴표("")를 생략하는 경우가 있는데
+      //JSON에서는 key에 "" 더블 쿼테이션을 사용하라고 명시되어 있다.
+      //아래와 같이 '{"key":value, "key":"value ..."}' 식으로 써주고
+      //줄바꿈이 되어있는 부분에 \(역슬래쉬)로 구분을 해줘야 자바스크립트에서 인식을 한다. -> 역슬래쉬가 없으면 오류
+
+      const info =
+        '{\
+        "id": "k9924",\
+        "pass_word": 4423,\
+        "recent_update": "12/31",\
+        "active": false\
+        }';
+      //ex1.html:1 Uncaught SyntaxError: Unexpected token } in JSON at position 114
+      //-> 맨 아랫줄에 있던 false 뒤에 있던 ","을 삭제하니 정상가동, 습관적으로 구분을 위해서 콤마를 쓰던 것 때문에 구문오류
+      console.log(info);
+      //parse를 사용하면 JSON형식을 JS 데이터로 전환시켜준다.
+      const infoObj = JSON.parse(info);
+      console.log(infoObj);
+      const infoJSON = JSON.stringify(infoObj);
+      console.log(infoJSON);
+    </script>
+  </body>
+</html>

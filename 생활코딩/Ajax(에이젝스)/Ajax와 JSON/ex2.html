@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex1.html 과 time.php를 JSON화 시키기: GET방식</title>
+    <!-- 이전 예시를 JSON화 시키려면 어떻게하면 될까? 
+    우선 서버쪽 time.php예시 코드에서 
+    echo implode(',', $timezones); -> echo json_encode($timezone); 으로 변경해준다. 
+    json_encode는 PHP의 데이터를 JSON 형식으로 전환해주는 PHP 내장함수이다. 이렇게하면 JS에 JSON화된
+    서버측 데이터를 넘겨줄 수 있다.
+    결과: ["Asia\/Seoul,America\/New_York"]  -->
+  </head>
+  <body>
+    <p id="timezones"></p>
+    <input type="button" id="execute" value="execute" />
+    <script>
+      document
+        .querySelector("input")
+        .addEventListener("click", function (event) {
+          const xhr = new XMLHttpRequest();
+          xhr.open("GET", "./time.php");
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              const _tzs = xhr.responseText;
+              //   const tzs = _tzs.split(",");
+              // 위의 코드는 JSON을 사용하지 않을 때 배열을 만들기 위한 코드였다.
+              // 아래의 코드를 통해서 서버에서 전송한 JSON 데이터를 JS의 배열로 만들 수 있다.
+              const tzs = JSON.parse(_tzs);
+              const _str = "";
+              for (var i = 0; i < tzs.length; i++) {
+                _str += "<li>" + tzs[i] + "</li>";
+              }
+              _str = "<ul>" + _str + "</ul>";
+              document.querySelector("#timezones").innerHTML = _str;
+            }
+          };
+          xhr.send();
+        });
+    </script>
+  </body>
+</html>
