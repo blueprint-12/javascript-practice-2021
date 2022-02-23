@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery에서 Ajax사용하기</title>
+  </head>
+  <body>
+    <!-- //서버쪽 ./time.php는 코드 편집기에서 지원하지 않기 때문에 생략 -->
+    <p>time : <span id="time"></span></p>
+    <input type="button" id="execute" value="execute" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      //GET방식
+      $("#execute").click(function () {
+        $.ajax({
+          url: "./time.php",
+          success: function (data) {
+            $("#time").append(data);
+          },
+        });
+      });
+      //아래는 POST 방식
+      $("#execute").click(function () {
+        $.ajax({
+          url: "./time2.php",
+          type: "post",
+          //아래 코드는 form 태그의 정보를 값의이름=값의내용&값 의 형식으로 바꿔준다.
+          data: $("form").serialize(),
+          success: function (data) {
+            $("#time").text(data);
+          },
+        });
+      }) <
+        //JSON(데이터 포맷) 처리, GET방식
+        script >
+        $("#execute").click(function () {
+          $.ajax({
+            url: "./time3.php",
+            dataType: "json",
+            success: function (data) {
+              var str = "";
+              for (var name in data) {
+                str += "<li>" + data[name] + "</li>";
+              }
+              $("#timezones").html("<ul>" + str + "</ul>");
+            },
+          });
+        });
+    </script>
+  </body>
+</html>
