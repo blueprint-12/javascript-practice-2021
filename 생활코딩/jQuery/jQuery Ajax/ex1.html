@@ -7,6 +7,10 @@
     <title>jQuery에서 Ajax사용하기</title>
   </head>
   <body>
+    <p>
+      jQuery를 이용해서 Ajax를 사용하면 많은 이점이 있는데 그 중의 하나가
+      크로스브라우징의 문제를 jQuery가 알아서 해결해준다는 점
+    </p>
     <!-- //서버쪽 ./time.php는 코드 편집기에서 지원하지 않기 때문에 생략 -->
     <p>time : <span id="time"></span></p>
     <input type="button" id="execute" value="execute" />
@@ -40,8 +44,8 @@
             url: "./time3.php",
             dataType: "json",
             success: function (data) {
-              var str = "";
-              for (var name in data) {
+              const str = "";
+              for (let name in data) {
                 str += "<li>" + data[name] + "</li>";
               }
               $("#timezones").html("<ul>" + str + "</ul>");
