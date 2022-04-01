@@ -9,33 +9,27 @@
   </head>
   <body>
     <div class="alert-box" id="alert">
-      <p>Alert 박스</p>
-      <button onclick="showAlertBox('none')">닫기</button>
+      <p id="title">Alert 박스</p>
+      <button id="close">X</button>
     </div>
-    <button onclick="showAlertBox('block')">열기</button>
 
-    <div class="alert-box" id="personal">
-      <p>Alert 박스</p>
-    </div>
-    <button onclick="changeInput('아이디')">버튼1</button>
-    <button onclick="changeInput('비번')">버튼2</button>
+    <button onclick="changeContent('아이디')">버튼1</button>
+    <button onclick="changeContent('비번')">버튼2</button>
+
     <script>
-      //UI구현 기본 법칙
-      // 1.미리 디자인해놓고 숨기기(UI를 보여주고 안보여주고할때는 css display none을 많이씀)
-      // 2. 버튼 누르거나하면 보여주기
-      //onclick="document.querySelector('.alert-box').style.display ='block';"
-      // 위처럼 굳이 쿼리셀렉터로 안해도됨 그냥 id 부여해도됨
-
-      //js 와 html은 분리시켜줘야함 onclick 내부에 바로 js를 쓰는 것은 좋지 않음
       function showAlertBox(isdefault) {
         document.getElementById('alert').style.display = isdefault;
       }
 
-      function changeInput(content) {
-        const div = document.getElementById('personal');
+      function changeContent(content) {
+        const div = document.getElementsByClassName('alert-box')[0];
+        const title = document.getElementById('title');
+        title.innerHTML = `${content} 입력해라`;
         div.style.display = 'block';
-        div.innerHTML = `${content} 입력해라`;
       }
+      document.getElementById('close').addEventListener('click', function () {
+        document.getElementById('alert').style.display = 'none';
+      });
     </script>
   </body>
 </html>
