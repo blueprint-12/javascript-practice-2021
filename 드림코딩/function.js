@@ -109,9 +109,79 @@ function upgradeUser(user) {
 // a function expression is created when the execution reches it.
 //a function declaration(호이스팅 지원) vs a function expression 비교
 const print = function () {
-  //annonymous function
+  //anonymous function
   console.log('print');
 };
 print();
 const printAgain = print;
 printAgain();
+
+// 2. Callback function using function expression
+
+// anonymous function(아래는 익명함수 사용)
+const printYes = function () {
+  console.log('yes');
+};
+
+// named function (여기서는 print라는 이름의 함수를 변수 printNo에 할당)
+// 아래와 같이 expression에서 함수의 이름을 부여하는 경우는 디버깅을 할 때,
+// + 디버깅의 스택 트레이스에 함수명이 나오게 하기위함
+// + 함수 내부에서 자기 자신을 호출(이것을 recursion이라 부릅니다.)할 떄 사용하기 위함임
+const printNo = function print() {
+  console.log('no!');
+  // print(); recursion -> 무한 호출이기 때문에 콜스택이 꽉차서 에러발생함
+};
+
+function randomQuiz(answer, printYes, printNo) {
+  if (answer === 'love you') {
+    printYes();
+  } else {
+    printNo();
+  }
+}
+randomQuiz('wrong', printYes, printNo);
+randomQuiz('love you', printYes, printNo);
+
+// Arrow function
+// always anonymous (화살표 함수는 항상 익명함수이다. )
+// 아래는 function expression
+const simplePrint = function () {
+  console.log('simplePrint!');
+};
+//위의 예시에서 {} 블록도 필요없고 function이라는 키워드도 필요없어진다. return도 필요없음
+const simplePrintArw = () => console.log('simplePrint Arrow function ver');
+
+// 아래는 같은 기능을 화살표함수와 함수표현식의 차이다.
+// 화살표 함수는 배열이나 리스트에 활용하기 좋다.
+// 한줄 짜리 코드라면 return과 {}블록을 생략해도 되지만 여러줄의 경우 {return }을 써줘야 한다.
+const addArw = (a, b) => a + b;
+const addFuncExpression = function (a, b) {
+  return a + b;
+};
+
+// IIFE: Immediately Invoked Funciton Expression
+//함수를 선언과 동시에 호출하는 표현식
+(function hello() {
+  console.log('IIFE');
+})();
+
+// 간단한 계산기 만들기
+
+function calculate(command, a, b) {
+  switch (command) {
+    case 'add':
+      return a + b;
+    case 'substract':
+      return a - b;
+    case 'divide':
+      divide(a, b);
+      return a / b;
+    case 'multiply':
+      return a * b;
+    case 'remainder':
+      return a % b;
+    default:
+      throw Error('unknown command');
+  }
+}
+console.log(calculate('remainder', 7, 3));
