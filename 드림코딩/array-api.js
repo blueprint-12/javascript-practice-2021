@@ -79,6 +79,7 @@ const students = [
 
 // enrolled 값이 true인 애들만 모아서 새로운 배열을 만들기
 // filter() API , 얘도 callback함수 true인 경우만 값을 반환해서 새로운 배열을 만들어줌
+// 조건을 콜백함수로 정의하고 그걸로 엘리먼트들을 거른 다음에 새로운 배열로 반환하고 싶으면 filter를 쓰면 된다.
 /* The filter() method creates a new array with all elements 
   that pass the test implemented by the provided function. */
 {
@@ -109,7 +110,11 @@ console.clear();
 // 결론적으로 some()은 엘리먼트의 조건이 하나라도 만족하는 경우, every()는 모든 엘리먼트가 조건에 만족해야할 경우를 판단
 {
   const result = students.some((student) => student.score < 50);
-  console.log(result);
+  console.log(result); //t
+  //some을 이용해서 50보다 낮은 애가 있는지 확인하는 것,
+  // 즉 every 구문이 true를 반환한다면(모든 학생이 50점 이상이라면) 전체에 !not 연산자를 붙여서 false
+  const result2 = !students.every((student) => student.score >= 50);
+  console.log(result2); //t
 }
 
 console.clear();
@@ -137,3 +142,35 @@ console.clear();
   );
   console.log(result / students.length);
 }
+
+// Q10. make a string containing all the scores
+// result should be : '45, 80, 90, 66, 99'
+// map()과 join() 이용하기
+// map을 이용하면 새로운 배열이 리턴된다.
+{
+  const result = students
+    .map((student) => student.score)
+    // 50점 이상인 것들만 가져오고 싶다면 filter()로 걸러주면됨
+    .filter((score) => score >= 50)
+    .join();
+  console.log(`the answer of Q10 is ${result}`);
+}
+// Q10의 결과를 -> Q11 오름차순 정렬하기
+// result should be: '45, 66, 80, 88, 90'
+{
+  const sortedStringResult = students
+    .map((student) => student.score)
+    // sort에서 a-b가 오름차순인 이유: a가 b보다 작으니까 음수값을 리턴 return value가 0보다 작으면 오름차순 정렬
+    // 반대로 내림차순을 하려면 b-a 를 하면 된다.
+    .sort((a, b) => a - b)
+    .join();
+  console.log(sortedStringResult); //45,66,80,90,99
+}
+// sort 추가정리
+// sort의 콜백함수는 첫번째(이전값) element와 두번째(현재값) element를 매개변수로 받는데
+// 둘을 계산한 리턴값이 마이너스(음수)라면 첫번째가 두번째 arg보다 작다고 간주되어 정렬된다.
+/* 
+return value > 0	    sort b before a 양수일 때 b->a 순서
+return value < 0	    sort a before b 음수일 때 a->b 순서 
+return value === 0	  keep original order of a and b
+*/
