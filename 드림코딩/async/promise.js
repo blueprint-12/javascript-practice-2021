@@ -71,7 +71,7 @@ const getSun = () =>
   });
 const getMoon = (sun) =>
   new Promise((resolve, reject) => {
-    setTimeout(() => resolve(`${sun} => 🌚`), 1000);
+    setTimeout(() => reject(new Error(`${sun} => 🌚`)), 1000);
   });
 const mix = (moon) =>
   new Promise((resovle, reject) => {
@@ -79,6 +79,9 @@ const mix = (moon) =>
   });
 getSun() // 프리티어가 then 코드를 한줄로 만들어줄텐데 그럴 때는 // 주석처리를 통해 아래와 같이 정렬이 가능하다.
   .then(getMoon)
+  .catch((error) => {
+    return '🤍';
+  })
   .then(mix)
   .then(console.log);
 //   .then((son) => getMoon(son))
@@ -87,3 +90,80 @@ getSun() // 프리티어가 then 코드를 한줄로 만들어줄텐데 그럴 �
 // 위의 코드처럼 한가지 value만 받아와서 해당 함수에 같은 것을 전달할 경우
 // 코드를 아래와 같이 생략할 수 있다.
 // -> 심지어 콘솔로그의 인자역시 같아서 생략가능
+
+//에러처리는 .catch()를 통해서 할 수 있음
+
+//fulfilled(이행) 상태 -> 다른 말로하면 성공적으로 완료 상태
+function getData() {
+  return new Promise((resolve, reject) => {
+    const data = 100;
+    resolve(data);
+  });
+}
+
+// resolve()의 결과 값 data를 resolvedData로 받음
+getData().then((resolvedData) => {
+  console.log(resolvedData); // 100
+});
+
+function getData2() {
+  return new Promise((resolve, reject) => {
+    reject(new Error('Request is failed!'));
+  });
+}
+
+//reject()의 결과 값 Error를 err에 받음
+getData2() //
+  .then()
+  .catch(console.log);
+/*
+  .catch((err) => {
+    console.log(err);
+  });
+  */
+//위와 같이 전달받은 인자와 쓰는 인자가 같을 경우 생략가능한 것으로 앎
+
+//프로미스 객체를 생성하여 setTimeout메서드를 통해 비동기 처리를 실행
+// 그 다음에 처리할 콜백 함수인 resolve에 문자열 B 를 넘긴다. 그리고 resolve함수를 호출
+// 이렇게 resolve 함수를 호출하면 Promise안의 비동기 처리를 종료시킨다.
+// 다음에 실행할 작업인 then 메서드에 등록한 코드를 호출하게 된다.
+// resolve함수의 인수인 B는 then 메서드에 등록한 함수의 인수, resolvedData로 받아서
+// console.log에서 사용할 수 있다. 인수의 이름은 해당 함수 안에서만 유효하기 때문에 이름은 상관없다.
+let 프로미스 = new Promise((resolve, reject) => {
+  //최초 비동기 처리 코드
+  setTimeout(() => {
+    console.log('A');
+    resolve('B');
+  }, 1000);
+});
+프로미스.then((resolvedData) => {
+  console.log(resolvedData);
+});
+console.log(프로미스);
+
+//reject 예제
+
+let 프로미스2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    let num = parseInt(prompt('10 이하의 숫자를 입력하세요'));
+    if (num < 10) {
+      resolve('정답');
+    } else {
+      reject(new Error(`오류 : 숫자 ${num}은 10을 초과했습니다.`));
+    }
+  }, 1000);
+});
+// 프로미스2 //
+//   .then(console.log)
+//   .catch(console.log);
+
+//then() 메서드의 두번째 인수
+// then 메서드의 두번째 인수로 실패 콜백 함수를 지정하면 catch 메서드를 사용하지 않고 하나로 작성할 수 있다.
+프로미스2.then(
+  (num) => {
+    console.log(`정답 : 숫자 ${num}은 10이하 입니다.`);
+  },
+  (error) => {
+    console.log(error);
+  },
+);

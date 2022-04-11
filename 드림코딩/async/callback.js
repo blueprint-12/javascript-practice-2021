@@ -47,8 +47,7 @@ class UserStorage {
       } else {
         onError(new Error('not found'));
       }
-    }),
-      2000;
+    }, 2000);
   }
   getRoles(user, onSuccess, onError) {
     setTimeout(() => {
