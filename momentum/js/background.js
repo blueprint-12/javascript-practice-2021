@@ -1,7 +1,7 @@
 const images = [
-    "0.jpeg",
-    "1.jpg",
-    "2.jpg",
+    "icebug.jpg",
+    "wave.jpg",
+    "flowers.jpg",
 ];
 const chosenImage = images[Math.floor(Math.random() * images.length)];
 

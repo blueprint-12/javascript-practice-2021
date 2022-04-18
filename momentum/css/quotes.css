@@ -7,8 +7,8 @@
 #quote span {
   display: block;
   padding-top: 7px;
-  color: aliceblue;
-  text-shadow: goldenrod 1px 1px 5px;
+  color: rgb(255, 255, 255);
+  text-shadow: rgb(61, 95, 169) 1px 1px 5px;
 }
 #quote span:first-child {
   font-size: 1rem;

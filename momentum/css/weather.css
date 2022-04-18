@@ -1,6 +1,6 @@
 #weather {
   margin-top: 5px;
   font-weight: 500;
-  color: rgb(24, 24, 77);
-  text-shadow: goldenrod 1px 1px 5px;
+  color: rgb(255, 255, 255);
+  text-shadow: rgb(61, 95, 169) 1px 1px 5px;
 }
