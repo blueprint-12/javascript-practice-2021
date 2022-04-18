@@ -1,3 +1,13 @@
+#todo-form {
+  display: flex;
+  flex-direction: column;
+}
+#todo-form-title {
+  margin-bottom: 10px;
+  color: #0078d7;
+  font-weight: 600;
+}
+
 ul#todo-list {
   display: flex;
   flex-direction: column;

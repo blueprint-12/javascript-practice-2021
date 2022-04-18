@@ -50,7 +50,7 @@ body {
 /*이슈: display flex 를 하니까 form에 hidden 클래스 적용이 안됨 why? 
 -> .hidden CSS 에 !important 를 주니까 해결됨 우선순위를 높이면 되는 거 같네요*/
 .main-cont > * {
-  margin: 12px 0;
+  margin: 10px 0;
   display: flex;
   align-items: center;
   justify-content: center;
