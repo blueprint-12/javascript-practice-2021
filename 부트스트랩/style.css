@@ -1,0 +1,58 @@
+* {
+    font-family: 'Gowun Dodum', sans-serif;
+}
+
+.mytitle {
+    height: 250px;
+    width: 100%;
+
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://data.1freewallpapers.com/download/colorful-kitten-on-the-rocks.jpg");
+    background-position: center;
+    background-size: cover;
+
+    color: white;
+    /*자식 요소들(내용물)을 정렬하는 방법: 4가지 요소가 세트!
+    외울필요 없이 거의 세트라고 생각하고 column to row 정도만 바꾼다*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mytitle >h1 {
+    font-family: 'Poor Story', cursive;
+}
+
+.mypost {
+    /*background-color: green;*/
+
+    color: grey;
+    max-width: 500px;
+    width: 95%;
+
+    margin: 20px auto 0 auto;
+
+    box-shadow: 0 0 3px 0 gray;
+    padding: 20px;
+}
+
+.btn-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    margin-top: 20px;
+}
+
+.btn-wrap > button {
+    margin-right: 15px;
+    color: white;
+}
+
+.card-cont{
+    margin: 20px auto 20px auto;
+}
+.card {
+    max-width: 500px;
+    width: 95%;
+    margin: 10px auto 10px auto;
+}
