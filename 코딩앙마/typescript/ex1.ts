@@ -164,7 +164,7 @@ b[0].toLowerCase(); // .을 찍으면 해당 요소의 사용가능한 메소드
   console.log(user.name); // '동그리'
 }
 
-//enum을 통해 객체말고 함수 정의도 가능하다!
+//interface을 통해 객체말고 함수 정의도 가능하다!
 {
   interface Add {
     // (인자): 리턴타입
@@ -177,6 +177,7 @@ b[0].toLowerCase(); // .을 찍으면 해당 요소의 사용가능한 메소드
 
   console.log(add(10, 20));
 
+  //예시 추가: 성인인지 boolean값을 반환하는 함수를 정의
   interface IsAdult {
     (age: number): boolean;
   }
@@ -192,3 +193,60 @@ b[0].toLowerCase(); // .을 찍으면 해당 요소의 사용가능한 메소드
   console.log(`Am I adult ? the answer : ` + isAdult(20));
 }
 //🤸‍♀️ 인터페이스를 class 생성할 때에도 사용할 수 있다!
+{
+  interface Car {
+    color: string;
+    wheels: number;
+    start(): void;
+  }
+  class Bmw implements Car {
+    // color: 'silver';
+    color;
+    wheels = 4;
+    //클래스가 생성될 때 색상을 입력받고 싶다면 아래와같이 생성자 함수를 활용하면된다.
+    constructor(c: string) {
+      this.color = c;
+    }
+    start() {
+      console.log('부릉부릉~');
+    }
+  }
+  const b = new Bmw('green');
+  console.log(b);
+  b.start(); //"부릉부릉~"
+  /* 아래는 b를 TS playground에서 출력한 결과
+    Bmw: {
+    "wheels": 4,
+    "color": "green"
+  } */
+}
+// : 와 = 를 제대로 보고 써라..
+
+//🤸‍♀️ 인터페이스는 확장이 가능하다 extends라는 키워드를 활용
+{
+  interface Car {
+    color: 'green';
+    wheels: number;
+    start(): void;
+  }
+  interface Benz extends Car {
+    // Car가 가지고 있는 속성은 이미 갖고있음
+
+    stop(): void;
+  }
+  const benz: Benz = {
+    color: 'green',
+    wheels: 5,
+    stop() {
+      console.log('stoped');
+    },
+    start() {
+      console.log('starteds');
+    },
+  };
+  console.log(benz);
+  /*{
+  "color": "green",
+  "wheels": 5
+} */
+}
