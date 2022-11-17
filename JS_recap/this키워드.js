@@ -119,3 +119,26 @@
   first(); // 1
   second(); //1
 }
+
+//new 바인딩
+{
+  function Binding() {
+    this.a = 20;
+  }
+
+  const bind = new Binding();
+  console.log(bind.a);
+
+  class Test {
+    constructor(name) {
+      this.name = name;
+    }
+    sayHi() {
+      return this.name;
+    }
+  }
+
+  const test1 = new Test('이름');
+  test1.name; //이름
+  test1.sayHi(); //이름, 근데 콘솔로그 찍어야됨
+}

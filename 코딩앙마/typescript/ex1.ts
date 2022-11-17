@@ -17,9 +17,10 @@ showItems([2, 3, 4, 5]);
 let car = 'BMW';
 
 // car = 3; //Type 'mumber' is not assignable to type 'string'.
-
-let age: number = 30;
-let isAdult: boolean = true;
+{
+  let age: number = 30;
+  let isAdult: boolean = true;
+}
 
 //숫자요소를 담은 배열을 아래와 같이 2가지 방식으로 표현해줄 수 있다.
 {
@@ -107,6 +108,13 @@ let isAdult: boolean = true;
 
 // =================================================================================
 //🐕 강의3: Interface(인터페이스)
+//기본 개념:
+/*
+인터페이스는 ES6가 지원하지 않는 타입스크립트만의 특징입니다. 인터페이스는 타입이며 컴파일 후 사랍집니다.
+추상 클래스는 선언과 구현이 모두 존재하지만 인터페이스는 선언만 존재하며,
+멤버 메서드를 선언할 수 있지만 접근 제한자는 설정할 수 없습니다. 
+
+*/
 
 //기존 JS 객체 문법을 보면
 {
@@ -226,11 +234,21 @@ let isAdult: boolean = true;
 // : 와 = 를 제대로 보고 써라..
 
 //🤸‍♀️ 인터페이스는 확장이 가능하다 extends라는 키워드를 활용
+
 {
   interface Car {
-    color: 'green';
+    color: string;
     wheels: number;
     start(): void;
+  }
+
+  interface Toy {
+    name: string;
+  }
+  //참고로 확장은 여러개를 할 수 있다.
+  interface ToyCar extends Car, Toy {
+    //color, wheels, start(), name, price가있어야 겠죠
+    price: number;
   }
   interface Benz extends Car {
     // Car가 가지고 있는 속성은 이미 갖고있음
@@ -252,4 +270,14 @@ let isAdult: boolean = true;
   "color": "green",
   "wheels": 5
 } */
+
+  const toycar: ToyCar = {
+    color: 'grenn',
+    wheels: 5,
+    start() {
+      console.log('시작');
+    },
+    name: 'toycar',
+    price: 2000,
+  };
 }

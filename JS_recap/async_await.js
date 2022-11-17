@@ -1,4 +1,4 @@
-// async & await ES8추가
+// async & await ES8(EcmaScript2017) 추가
 
 //비동기를 편하게 보단 promise 객체를 사용하기 편하게 만들어줍니다.
 
@@ -33,4 +33,38 @@
   }
 
   myFunc(); //async의 영향으로 promise 객체와 result 인 완료가 반환된다.
+}
+// 에러 핸들링
+{
+  const f1 = (msg) => {
+    console.log(msg);
+    return new Promise((res, rej) => {
+      setTimeout(() => {
+        res('f1 주문 완료');
+      }, 1000);
+    });
+  };
+  const f2 = (msg) => {
+    console.log(msg);
+    return new Promise((res, rej) => {
+      setTimeout(() => {
+        res('f2 주문 완료');
+      }, 1000);
+    });
+  };
+  const f3 = (msg) => {
+    console.log(msg);
+    return new Promise((res, rej) => {
+      setTimeout(() => {
+        res('f3 주문 완료');
+      }, 1000);
+    });
+  };
+  // 기존 프로미스 방법
+  // f1()
+  //   .then((msg) => f2(msg))
+  //   .then((msg) => f3(msg))
+  //   .then((msg) => console.log(msg))
+  //   .catch((err) => console.log(err))
+  //   .finally(() => console.log(`오더 완료!`));
 }
