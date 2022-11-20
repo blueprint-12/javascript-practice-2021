@@ -34,3 +34,176 @@ foo(10, null);
   }
   foo(10, 32); //42
 }
+{
+  function foo(a) {
+    console.log(a + b);
+    b = a;
+  }
+  foo(2);
+}
+
+{
+  function foo(a) {
+    var b = a * 2;
+    function bar(c) {
+      console.log(a, b, c);
+    }
+    bar(b * 3);
+  }
+  foo(2);
+}
+
+//전부 노출된 함수 예시
+// doSomethingElse와 변수 b 는 밖에서도 접근할 수 있다.
+{
+  function doSomething(a) {
+    b = a + doSomethingElse(a * 2);
+    console.log(b * 3);
+  }
+  function doSomethingElse(a) {
+    return a - 1;
+  }
+  var b;
+  doSomething(2);
+}
+{
+  function doSomething(a) {
+    function doSomethingElse(a) {
+      return a - 1;
+    }
+    var b;
+    b = a + doSomethingElse(a * 2);
+    console.log(b * 3);
+  }
+  doSomething(2);
+}
+{
+  var a = 2;
+  (function foo() {
+    var a = 3;
+    console.log(3);
+  })();
+  console.log(a); //2
+}
+{
+  setTimeout(function () {
+    console.log('1초 기다릴게!');
+  }, 1000);
+
+  setTimeout(function timeoutHandler() {
+    console.log('안녕 난 이름을 가지고 있는 함수 표현식이야, 1초 기다릴게!');
+  }, 1000);
+}
+{
+  let a = 2;
+  (function foo() {
+    let a = 3;
+    console.log(a);
+  })(); //3
+  console.log(a); //2
+}
+
+let a = 2;
+
+(function IIFE(def) {
+  def(window);
+})(function def(global) {
+  let a = 3;
+  console.log(a);
+  console.log(global.a);
+});
+
+//블록 스코프 예시
+{
+  for (let i = 0; i < array.length; i++) {
+    console.log(array[i]);
+  }
+}
+{
+  try {
+    nothing();
+  } catch (error) {
+    console.log(error);
+  }
+  console.log(error);
+}
+
+//ES6 let
+{
+  console.log(bar);
+  let bar = 2;
+  //   Uncaught ReferenceError: Cannot access 'bar' before initialization
+  //     at <anonymous>:2:15
+  // (anonymous) @ VM569:2
+}
+{
+  let j;
+  for (j = 0; j < 10; j++) {
+    let i = j; //re-bound each iteration;
+    console.log(i);
+  }
+}
+
+//chapter4 호이스팅
+{
+  console.log(a); //예상 2, but undefined
+  var a = 2;
+}
+{
+  var a;
+  a = 2;
+  console.log(a);
+}
+{
+  var a;
+  console.log(a);
+  a = 2;
+}
+{
+  foo();
+  function foo() {
+    console.log(a);
+    var a = 2;
+  }
+}
+{
+  function foo() {
+    var a;
+    console.log(a);
+    a = 2;
+  }
+  foo();
+}
+// 함수 표현식(호이스팅 X)
+{
+  foo(); //TypeError
+  var foo = function bar() {
+    console.log('안녕하세요.');
+  };
+}
+//변수 vs 함수 시, 함수가 먼저 끌어올려진다.
+{
+  foo();
+  var foo;
+
+  function foo() {
+    console.log(1);
+  }
+  foo = function () {
+    console.log(2);
+  };
+}
+{
+  foo();
+
+  var a = true;
+  if (a) {
+    function foo() {
+      console.log('a');
+    }
+  } else {
+    function foo() {
+      console.log('b');
+    }
+  }
+}
