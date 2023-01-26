@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+#flex-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgb(202, 201, 201);
+}
+.container {
+  width: 800px;
+  border-radius: 5px;
+  border: 2px solid rgb(202, 201, 201);
+  padding: 20px;
+  background-color: white;
+}
+.wrapper {
+  box-sizing: border-box;
+}
+.wrapper__head__title {
+  text-align: center;
+  color: white;
+  background-color: orange;
+  margin: 0;
+}
+.wrapper__head__sub-title {
+  font-weight: 600;
+  border-bottom: thick double #32a1ce;
+}
+
+#point {
+  font-weight: 600;
+  color: orange;
+  display: inline-block;
+  margin: 10px 0;
+}
+
+/* 본문 wrapper */
+
+.wrapper__body {
+  padding: 5px 15px;
+  border: 2px solid rgb(216, 216, 216);
+}
+.wrapper__body__content {
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+strong {
+  font-style: italic;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: blue;
+}
+.wrapper__body__content > p:first-child {
+  background-color: gainsboro;
+  padding: 5px;
+}
+
+#red-point {
+  color: rgb(230, 115, 115);
+}
+#green-point {
+  color: rgb(117, 248, 189);
+}
+.wrapper__body__content-date {
+  color: rgb(167, 167, 167);
+  line-height: 1.5;
+  text-align: end;
+  padding: 0;
+}
