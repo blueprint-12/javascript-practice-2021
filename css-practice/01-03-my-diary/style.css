@@ -1,20 +1,84 @@
 * {
   box-sizing: border-box;
+  /* margin: 0;
+  padding: 0; */
 }
 body {
   margin: 0;
 }
+
+.header {
+  border-bottom: 1px solid gray;
+}
+.header-inner {
+  width: 900px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.logo {
+  float: left;
+  width: 100px;
+  height: 80px;
+}
+
+.logo h1 {
+  margin: 0;
+  padding-top: 15px;
+}
+.logo h1 a {
+  text-decoration: none;
+  color: orange;
+}
+
+.menu {
+  float: left;
+  /* calc내부에서 사칙연산을 할 때에는 사칙연산자 앞뒤 공백이 있어야 정상작동 */
+  width: calc(100% - 200px);
+  height: 80px;
+  text-align: center;
+}
+.menu__ul {
+  display: inline-block;
+  padding: 10px 0;
+  margin: 0;
+}
+.menu__ul li {
+  float: left;
+  list-style: none;
+}
+
+.menu__ul li a {
+  display: block;
+  color: black;
+  text-decoration: none;
+  padding: 15px 20px;
+}
+.menu__ul li a:hover {
+  color: orange;
+}
+.user {
+  float: left;
+  width: 100px;
+  height: 80px;
+  padding-top: 23px;
+}
+.clearfix {
+  clear: both;
+}
 #flex-box {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
   background-color: rgb(202, 201, 201);
 }
+
 .container {
   width: 800px;
-  border-radius: 5px;
-  border: 2px solid rgb(202, 201, 201);
+  border-radius: 10px;
+  border: 1px solid gray;
   padding: 20px;
   background-color: white;
 }
@@ -46,6 +110,7 @@ body {
   border: 2px solid rgb(216, 216, 216);
 }
 .wrapper__body__content {
+  padding: 0;
   font-weight: 600;
   line-height: 1.7;
 }
@@ -68,8 +133,7 @@ strong {
   color: rgb(117, 248, 189);
 }
 .wrapper__body__content-date {
-  color: rgb(167, 167, 167);
+  color: #919191;
   line-height: 1.5;
-  text-align: end;
-  padding: 0;
+  text-align: right;
 }

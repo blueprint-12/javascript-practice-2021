@@ -1,0 +1,23 @@
+/* style.css */
+.box {
+  width: 300px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.box1 {
+  height: 400px;
+  background-color: red;
+  float: left;
+}
+.box2 {
+  height: 200px;
+  background-color: blue;
+  float: right;
+}
+
+/* 컨텐츠가 없는 div박스에 clearfix 라는 관례명을 붙여주고
+float된 요소들의 가장 맨 아래에 해당 div를 넣어주면 간편하게 모든 요소에 clear속성을 적용할 수 있다. */
+.clearfix {
+  clear: both;
+}
