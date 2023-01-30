@@ -7,65 +7,52 @@ body {
   margin: 0;
 }
 
+/* 헤더 ccs */
+
 .header {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-bottom: 1px solid gray;
 }
 .header-inner {
   width: 900px;
   height: 100%;
-  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
-.logo {
-  float: left;
+.logo .user {
   width: 100px;
-  height: 80px;
-}
-
-.logo h1 {
-  margin: 0;
-  padding-top: 15px;
 }
 .logo h1 a {
   text-decoration: none;
   color: orange;
 }
 
-.menu {
-  float: left;
-  /* calc내부에서 사칙연산을 할 때에는 사칙연산자 앞뒤 공백이 있어야 정상작동 */
-  width: calc(100% - 200px);
-  height: 80px;
-  text-align: center;
-}
 .menu__ul {
-  display: inline-block;
-  padding: 10px 0;
-  margin: 0;
+  display: flex;
+  padding: 0;
 }
 .menu__ul li {
-  float: left;
   list-style: none;
+  font-weight: 600;
 }
-
+/* a태그의 영역에 패딩값을 주면 정확한 text에 마우스가 호버되지않아도 되기 때문에 
+ 유저사용성이 높아진다. 그래서 padding값을 주는 것  */
 .menu__ul li a {
   display: block;
-  color: black;
+  padding: 10px 20px;
   text-decoration: none;
-  padding: 15px 20px;
+  color: black;
 }
 .menu__ul li a:hover {
   color: orange;
 }
-.user {
-  float: left;
-  width: 100px;
-  height: 80px;
-  padding-top: 23px;
-}
-.clearfix {
-  clear: both;
-}
+
+/* 본문 css */
+
 #flex-box {
   display: flex;
   flex-direction: column;
