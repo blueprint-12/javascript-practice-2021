@@ -1,0 +1,24 @@
+.box1 {
+  width: 200px;
+  height: 200px;
+  background-color: yellow;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.box1:after {
+  content: '나는 가상 요소이다.';
+  display: block;
+  background-color: blue;
+  color: white;
+}
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* 형제 선택자 사용 */
+.text ~ span {
+  background-color: red;
+}
