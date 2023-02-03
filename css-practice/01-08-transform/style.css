@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 500px;
+  height: 300px;
+  position: relative;
+}
+.base {
+  width: 200px;
+  height: 200px;
+  border: 2px dashed #aaa;
+  background-color: #ddd;
+  border-radius: 10px;
+}
+
+.target {
+  width: 200px;
+  height: 200px;
+  background-color: rgba(0, 0, 255, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 2px solid blue;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.target span {
+  color: #fff;
+}
+
+.target1 {
+  transform: translate(50%, 20%);
+}
+
+/* x축으로는 0.8만큼 y축으로는 1.2만큼 크기변화 */
+.target2 {
+  transform: scale(0.8, 1.2);
+}
+
+.target3 {
+  transform: skew(0, 30deg);
+}
+.target4 {
+  transform: rotate(35deg) translateY(120px);
+}
+.target4 {
+  transform: scaleY(0.7) skewX(20deg);
+}
