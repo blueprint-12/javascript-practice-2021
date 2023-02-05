@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+.container {
+  border: 2px solid red;
+  display: grid;
+  /* repeat의 두번째 속성값은 여러개를 줄 수 있으며 띄어쓰기로 구분 */
+  grid-template-columns: repeat(2, 1fr 2fr);
+  grid-template-rows: repeat(4, 100px);
+  gap: 5px;
+}
+.item {
+  border: 2px solid blue;
+}
+.item1 {
+  background-color: green;
+  /* 1에서 시작해서 2칸을 차지하는 영역까지 */
+  grid-column: 1 / span 2;
+  /* 1에서 4칸을 차지하는 영역까지 */
+  grid-row: 1 / span 3;
+}
