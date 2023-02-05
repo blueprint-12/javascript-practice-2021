@@ -7,20 +7,23 @@ body {
   padding: 0;
 }
 .itemWrap {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 7px;
 }
 
 .item {
-  width: calc(25% - 7px);
+  /* aspect-ratio는 대상 요소의 가로와 세로비율을 일정 비율로 유지시켜주는 속성이다. */
   aspect-ratio: 6 / 5;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  margin-bottom: 10px;
 }
 .imgBox {
   width: 100%;
