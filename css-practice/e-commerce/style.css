@@ -1,0 +1,58 @@
+.mainContentWrap {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 80vw;
+  padding: 10px;
+  gap: 10px;
+}
+
+.mainMenuWrap {
+  display: flex;
+}
+.mainMenu ul {
+  margin: 0;
+  width: 150px;
+  background-color: orange;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 15px 7px;
+  border-radius: 7px;
+}
+.mainMenu ul a {
+  text-decoration: none;
+  padding: 7px 10px;
+  margin-bottom: 3px;
+  color: white;
+  font-weight: 500;
+  transition: transform 0.2s ease-in-out;
+}
+.mainMenu__menu:hover {
+  background-color: rgba(247, 152, 0, 1);
+  border-radius: 10px;
+  transform: translateX(10px);
+}
+.mainMenu__register-btn {
+  width: 100%;
+  color: white;
+  margin-top: 7px;
+  display: block;
+  background-color: black;
+  padding: 7px 10px;
+  text-align: left;
+  transition: all 0.2s ease-in-out;
+}
+.mainMenu__register-btn:hover {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+#arrow {
+  display: inline-block;
+  transition: transform 0.2s ease-in-out;
+}
+#arrow:hover {
+  transform: translateX(20px);
+}
