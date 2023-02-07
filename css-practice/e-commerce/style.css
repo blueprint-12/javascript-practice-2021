@@ -1,7 +1,51 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Pretendard';
+}
+
 a {
   text-decoration: none;
 }
+/* 메인 배너 css*/
+.mainBanner {
+  height: 280px;
+  background-image: url('./img/banner.jpg');
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
+.mainBanner .text {
+  font-size: 42px;
+  font-weight: 800;
+  color: white;
+  /* text 자체 섀도우를 넣어준다. x축 y축 블러정도, 색상 */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  animation: titleText 1s ease-in-out;
+}
+
+@keyframes titleText {
+  0% {
+    transform: translateY(70px);
+    opacity: 0;
+  }
+  92% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 메인 컨텐츠 css > 메인 메뉴 css*/
 .mainContainer {
   display: flex;
   justify-content: center;
@@ -19,11 +63,12 @@ a {
 
 .mainMenu {
   margin-right: 7px;
-  width: 170px;
+  min-width: 170px;
 }
 .mainMenu ul {
+  display: block;
   margin: 0;
-  width: 150px;
+  width: 100%;
   background-color: orange;
   display: flex;
   align-items: flex-start;
@@ -39,11 +84,7 @@ a {
   font-weight: 500;
   transition: transform 0.2s ease-in-out;
 }
-.mainMenu__menu:hover {
-  background-color: rgba(247, 152, 0, 1);
-  border-radius: 10px;
-  transform: translateX(10px);
-}
+
 .mainMenu__register-btn {
   width: 100%;
   color: white;
@@ -55,15 +96,252 @@ a {
   text-align: left;
   transition: all 0.2s ease-in-out;
 }
-.mainMenu__register-btn:hover {
-  color: #333;
-  background-color: white;
-  border: 1px solid black;
-}
+
 #arrow {
   display: inline-block;
   transition: transform 0.2s ease-in-out;
 }
-.mainMenu__register-btn:hover #arrow {
-  transform: translateX(50px);
+
+/* 메인 컨텐츠 > 카드 css */
+
+.itemWrap {
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap; */
+  width: calc(100% -170px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 7px;
+}
+
+.item {
+  /* aspect-ratio는 대상 요소의 가로와 세로비율을 일정 비율로 유지시켜주는 속성이다. */
+  aspect-ratio: 6 / 5;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+/* .imgBox {
+  width: 100%;
+  height: 100%;
+} */
+.imgBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.textBox {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 20px;
+  z-index: 3;
+}
+.textBox p {
+  color: white;
+  margin: 5px 0 0;
+}
+.textBox__name {
+  font-size: 22px;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(50px);
+}
+.textBox__price {
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.item::after {
+  content: '';
+  display: block;
+  background: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 2;
+}
+
+/* transition이 적용된 요소에 각각 찾아가서 써주는 것보단 변화를 갖는 요소를
+한번에 작성해서 적용해주는게 편할 수 있다.  */
+.item:after,
+.item .imgBox img,
+.item .textBox__name,
+.item .textBox__price {
+  transition: all 0.3s ease-in-out;
+}
+
+/* 다른 속성은 그대로 가되 0.1초의 delay를 주기 위해서 덮어쓰는 코드 작성 */
+.item .textBox__price {
+  transition: all 0.3s ease-in-out 0.2s;
+}
+
+/* 미디어 쿼리 */
+@media screen and (max-width: 767px) {
+  /* 모바일 */
+  /* 모바일에서는 hover라는 개념이 없기 때문에 해당효과 x */
+  .mainBanner {
+    height: 160px;
+  }
+  .mainBanner .text {
+    font-size: 1.8rem;
+  }
+  .mainContentWrap {
+    flex-direction: column;
+    padding: 0;
+  }
+  .mainMenu {
+    width: 100%;
+  }
+  .mainMenu ul {
+    padding: 10px;
+    border-radius: 0;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .mainMenu ul a {
+    display: inline-block;
+    font-size: 14px;
+    /* padding: 10px; */
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  .mainMenu__register-btn {
+    /* opacity:0 과 display none은 다르다. */
+    display: none;
+  }
+  .itemWrap {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    padding: 10px;
+  }
+  .itemWrap .item {
+    width: 100%;
+    overflow: visible;
+    border: 1px solid #eee;
+  }
+
+  .imgBox img {
+    aspect-ratio: 6/5;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .textBox {
+    padding: 15px 10px;
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  .textBox p {
+    color: black;
+    margin: 0 0 5px 0;
+  }
+  .textBox__name {
+    font-size: 18px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .textBox__price {
+    font-size: 12px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  /* 태블릿 */
+  .mainBanner {
+    height: 200px;
+  }
+  .mainBanner .text {
+    font-size: 2.2rem;
+  }
+  .itemWrap {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+  }
+  .itemWrap .item {
+    width: 100%;
+    overflow: visible;
+    border: 1px solid #eee;
+  }
+
+  .imgBox img {
+    aspect-ratio: 6/5;
+    border-radius: 10px 10px 0 0;
+  }
+  .textBox {
+    padding: 15px 10px;
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  .textBox p {
+    color: black;
+    margin: 0 0 5px 0;
+  }
+  .textBox__name {
+    font-size: 18px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .textBox__price {
+    font-size: 12px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 위의 두 가지 경우에 해당하지 않는 경우엔 기본으로 설정한 pc용 viewport가 적용된다. */
+@media screen and (min-width: 1024px) {
+  /* 데스크 탑에서만 hover가 있기 때문에 모든 hover가 있는 요소들을 이곳으로 넣어준다. */
+  .mainMenu__menu:hover {
+    background-color: rgba(247, 152, 0, 1);
+    border-radius: 10px;
+    transform: translateX(10px);
+  }
+  .mainMenu__register-btn:hover {
+    color: #333;
+    background-color: white;
+    border: 1px solid black;
+  }
+  .mainMenu__register-btn:hover #arrow {
+    transform: translateX(50px);
+  }
+  .item:hover::after {
+    opacity: 1;
+  }
+  .item:hover .imgBox img {
+    transform: scale(1.1);
+    /* 이미지가 커졌을 때 내용물이 삐져나가면 안되니까 item에 overflow: hidden 처리 */
+    /* 필터 속성은 이미지에 추가효과를 줄 수 있다. */
+    filter: blur(3px);
+  }
+  .item:hover .textBox__name {
+    opacity: 1;
+    /* hover가 됐을 때 원래 자리로 오게하면 기존에 아래에 있던 텍스트를 위로 올라오는 애니메이션으로 만들어줄 수 있다. */
+    transform: translateY(0);
+  }
+  .item:hover .textBox__price {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
