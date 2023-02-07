@@ -1,14 +1,25 @@
-.mainContentWrap {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  width: 80vw;
-  padding: 10px;
-  gap: 10px;
+a {
+  text-decoration: none;
 }
 
-.mainMenuWrap {
+.mainContainer {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mainContentWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  max-width: 1320px;
+  padding: 10px;
+  /* margin 대신 gap을 요소 사이 공간을 벌릴때 쓰는 게 좋다. */
+  /* gap: 10px; */
+}
+
+.mainMenu {
+  margin-right: 7px;
+  width: 170px;
 }
 .mainMenu ul {
   margin: 0;
@@ -22,7 +33,6 @@
   border-radius: 7px;
 }
 .mainMenu ul a {
-  text-decoration: none;
   padding: 7px 10px;
   margin-bottom: 3px;
   color: white;
@@ -37,6 +47,7 @@
 .mainMenu__register-btn {
   width: 100%;
   color: white;
+  border: 1px solid #fff;
   margin-top: 7px;
   display: block;
   background-color: black;
@@ -45,7 +56,7 @@
   transition: all 0.2s ease-in-out;
 }
 .mainMenu__register-btn:hover {
-  color: black;
+  color: #333;
   background-color: white;
   border: 1px solid black;
 }
@@ -53,6 +64,6 @@
   display: inline-block;
   transition: transform 0.2s ease-in-out;
 }
-#arrow:hover {
-  transform: translateX(20px);
+.mainMenu__register-btn:hover #arrow {
+  transform: translateX(50px);
 }

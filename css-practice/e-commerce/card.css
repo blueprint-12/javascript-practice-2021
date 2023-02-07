@@ -12,6 +12,7 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap; */
+  width: calc(100% -170px);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
